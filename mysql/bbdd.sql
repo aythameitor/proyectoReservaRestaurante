@@ -17,7 +17,7 @@ CREATE TABLE if not exists `usuarios` (
   `creado` DATETIME NOT NULL DEFAULT current_timestamp(),
   `actualizado` DATETIME NOT NULL DEFAULT current_timestamp(),
   `idRol` int(11) DEFAULT 1,
-  CONSTRAINT `FK_idRol` FOREIGN KEY (`idRol`) REFERENCES `roles`(`idRol`) 
+  CONSTRAINT `FK_idRol` FOREIGN KEY (`idRol`) REFERENCES `roles`(`idRol`) ON DELETE CASCADE
 );
 
 CREATE TABLE if not exists `mesas` (
@@ -29,8 +29,8 @@ CREATE TABLE if not exists `reservas` (
   `idUsuario` int(11),
   `idMesa` int(11),
   `fechaReserva` DATETIME NOT NULL,
-  CONSTRAINT `FK_idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios`(`idUsuario`),
-  CONSTRAINT `FK_idMesa` FOREIGN KEY (`idMesa`) REFERENCES `mesas`(`idMesa`)
+  CONSTRAINT `FK_idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios`(`idUsuario`) ON DELETE CASCADE,
+  CONSTRAINT `FK_idMesa` FOREIGN KEY (`idMesa`) REFERENCES `mesas`(`idMesa`) ON DELETE CASCADE
 );
 ALTER TABLE `reservas` ADD UNIQUE `unique_ids`(`idMesa`, `fechaReserva`);
 INSERT INTO `roles` (`nombre`) VALUES ('cliente');

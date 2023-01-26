@@ -1,5 +1,4 @@
 <?php
-require 'partes/header.php';
 session_name("reservaRestaurante");
 session_start();
 $config = include 'config.php';
@@ -11,8 +10,8 @@ if(isset($_SESSION["email"])){
 }
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST["email"];
-        $contrasena = $_POST["contrasena"];
+        $email = strip_tags(trim($_POST["email"]));
+        $contrasena = strip_tags(trim($_POST["contrasena"]));
         
         $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
@@ -20,7 +19,6 @@ try {
         $idRol = select("idRol", $email, $conexion);
         $consultaConstrasena = select("contrasena", $email, $conexion);
         $cuenta = $consulta->rowCount();
-        
         if ($cuenta == 1 && password_verify($contrasena, $consultaConstrasena->fetchColumn())) {
             $_SESSION['email'] = $email;
             $_SESSION['idRol'] = $idRol->fetchColumn();
@@ -33,6 +31,7 @@ try {
 } catch (PDOException $error) {
     $error = $error->getMessage();
 }
+require 'partes/header.php';
 ?>
 <div class="container">
     <?php
