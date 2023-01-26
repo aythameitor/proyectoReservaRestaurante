@@ -5,20 +5,27 @@ $error = false;
 $config = include '../config.php';
 include "../funciones/consultas.php";
 if(!isset($_SESSION["email"])){
-    header("location:login.php");
+    header("location:../login.php");
     die();
 }
 try{
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-    if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 3){
+    if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 2){
         header("location:/confirmacion.php");
         die();
     };
-    if(isset($_GET["eliminar"])){
-        $eliminar = "DELETE FROM usuarios WHERE idUsuario='". $_GET["eliminar"] ."'";
-        $borrar = $conexion->prepare($eliminar);
-        $borrar->execute();
+    if(isset($_GET["eliminar"]) && $_SESSION["idRol"] == 3){
+        $comprobar = "SELECT idRol from usuarios where IdUsuario = :idUsuario";
+        $consultaCompr = $conexion->prepare($comprobar);
+        $consultaCompr->bindParam(":idUsuario", $_GET["eliminar"]);
+        $consultaCompr->execute();
+
+            if($consultaCompr->fetchColumn() <3){
+                $eliminar = "DELETE FROM usuarios WHERE idUsuario='". $_GET["eliminar"] ."'";
+                $borrar = $conexion->prepare($eliminar);
+                $array = $borrar->execute();
+            }
     }
     $consultaSQL = 'select * from usuarios';
     $sentencia = $conexion->prepare($consultaSQL);
@@ -58,7 +65,13 @@ try{
                         <th>Creado</th>
                         <th>Modificado</th>
                         <th>Rol</th>
+                        <?php
+                         if($_SESSION["idRol"]>=3){
+                        ?>
                         <th>Borrar</th>
+                        <?php
+                         }
+                         ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +93,7 @@ try{
                         ?></td>
                         <td>
                         <?php    
+                        if($_SESSION["idRol"]>=3){
                             if($fila["idRol"] <3){
                         ?>
                         <a href="mostrarUsuarios.php?eliminar=<?php echo $fila["idUsuario"]; ?>">Borrar</a>
@@ -89,6 +103,7 @@ try{
                                 }
                             }
                         }
+                    }
                     ?>
                 </tbody>
             </table>

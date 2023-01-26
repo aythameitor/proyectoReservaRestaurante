@@ -5,15 +5,14 @@ $config = include 'config.php';
 include "funciones/consultas.php";
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST["email"];
+        $email = strip_tags(trim($_POST["email"]));
         $contrasena = password_hash($_POST["contrasena"], PASSWORD_DEFAULT);
         $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
         $consultaComprobacion = select("idUsuario", $email, $conexion);
         
         if($consultaComprobacion->rowCount() == 0){
-            if(isset($_POST['admin']) && $_POST["admin"] == "valido"){
-                echo "a";
+            if(isset($_POST['admin']) && $_POST["admin"] == "valido" && $_SESSION["idRol"]==3){
                 $sql = "insert into usuarios (email, contrasena, idRol) values (:email, :contrasena, 2)";
                 $consulta = $conexion->prepare($sql);
                 $consulta->bindParam(":email", $email, PDO::PARAM_STR);

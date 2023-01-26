@@ -13,9 +13,8 @@ require 'partes/header.php';
 <div>
     <p>
         <?php
-        
-        echo $_SESSION["email"] . " " .$_SESSION['idRol'];
 
+        echo $_SESSION["email"] . " " .$_SESSION['idRol'];
         switch ($_SESSION["idRol"]) {
             case 1:
                 echo " es un usuario";

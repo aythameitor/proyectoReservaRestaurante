@@ -2,7 +2,7 @@
 if(isset($_POST["salir"])){
     unset($_SESSION["email"]);
     unset($_SESSION["idRol"]);
-    header("location:/login.php");
+    header("location:../login.php");
     die();
 }
 ?>
@@ -33,6 +33,8 @@ if(isset($_POST["salir"])){
                     case 2:
                         ?>
                         <a href="/registro.php" class="btn btn-primary">Registro</a>
+                        <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
+                        <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
@@ -41,7 +43,8 @@ if(isset($_POST["salir"])){
                     case 3:
                         ?>
                         <a href="/registro.php" class="btn btn-primary">Registro</a>
-                        <a href="usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
+                        <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
+                        <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
