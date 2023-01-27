@@ -39,8 +39,10 @@ try{
         die();
     };
     if(isset($_GET["eliminar"])){
-        $eliminar = "DELETE FROM mesas WHERE idMesa='". strip_tags(trim($_GET["eliminar"])) ."'";
+        $id = strip_tags(trim($_GET["eliminar"]));
+        $eliminar = "DELETE FROM mesas WHERE idMesa=:idMesa";
         $borrar = $conexion->prepare($eliminar);
+        $borrar->bindParam(":idMesa", $id, PDO::PARAM_INT);
         $borrar->execute();
     }
     $consultaSQL = 'select * from mesas';
@@ -99,6 +101,7 @@ if(isset($error)){
                         <th>Id</th>
                         <th>Número</th>
                         <th>Eliminar</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,6 +114,9 @@ if(isset($error)){
                         <td><?php echo $fila["numeroMesa"];?></td>
                         <td>
                         <a href="mostrarMesas.php?eliminar=<?php echo $fila["idMesa"]; ?>">Borrar</a>
+                        </td>
+                        <td>
+                        <a href="editarMesa.php?idMesa=<?php echo $fila["idMesa"]; ?>&numeroMesa=<?php echo $fila["numeroMesa"];?>">Editar</a>
                         </td>
                     </tr>
                     <?php

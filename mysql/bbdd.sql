@@ -14,8 +14,8 @@ CREATE TABLE if not exists `usuarios` (
   `idUsuario` int(11) primary key AUTO_INCREMENT NOT NULL,
   `email` varchar(255) NOT NULL UNIQUE,
   `contrasena` varchar(255) NOT NULL,
-  `creado` DATETIME NOT NULL DEFAULT current_timestamp(),
-  `actualizado` DATETIME NOT NULL DEFAULT current_timestamp(),
+  `creado` timestamp NOT NULL DEFAULT current_timestamp(),
+  `actualizado` timestamp NOT NULL DEFAULT current_timestamp(),
   `idRol` int(11) DEFAULT 1,
   CONSTRAINT `FK_idRol` FOREIGN KEY (`idRol`) REFERENCES `roles`(`idRol`) ON DELETE CASCADE
 );
