@@ -24,6 +24,7 @@ if(isset($_POST["salir"])){
                 switch ($_SESSION["idRol"]) {
                     case 1:
                         ?>
+                        <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
@@ -35,6 +36,7 @@ if(isset($_POST["salir"])){
                         <a href="/registro.php" class="btn btn-primary">Registro</a>
                         <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
                         <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
+                        <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
