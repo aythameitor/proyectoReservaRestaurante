@@ -24,7 +24,7 @@ try{
             if($consultaCompr->fetchColumn() <3){
                 $eliminar = "DELETE FROM usuarios WHERE idUsuario='". $_GET["eliminar"] ."'";
                 $borrar = $conexion->prepare($eliminar);
-                $array = $borrar->execute();
+                $borrar->execute();
             }
     }
     $consultaSQL = 'select * from usuarios';
@@ -57,7 +57,7 @@ try{
     <div class="row">
         <div class="col-md-12">
             <h2 class="p-2">Lista de usuarios</h2>
-            <table class="table">
+            <table class="table table-dark">
                 <thead>
                     <tr>
                         <th>Id</th>

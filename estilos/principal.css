@@ -1,0 +1,20 @@
+
+.footer{
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    display:flex;
+    justify-content: space-between;
+    z-index: -100;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.contenedor{
+    position: relative;
+  min-height: 100%;
+}

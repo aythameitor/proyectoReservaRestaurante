@@ -1,10 +1,13 @@
-<!--<div style="bottom:0;display:flex;justify-content:space-around;width:100%; background-color:black; color:white;">
+<!--<footer class="footer">
     <div>
         <p>Aythami miguel cabrera mayor</p>
     </div>
-    <div style="align-items:center">
-        <p>DSW 2023</p>
-    </div>
-</div>-->
+    <div class="text-center p-3 w-50">
+         © 2022 Copyright:
+         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />
+         Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">licencia de Creative Commons Reconocimiento 4.0 Internacional</a>.
+     </div>
+</footer>-->
+</div>
 </body>
 </html>

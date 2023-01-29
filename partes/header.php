@@ -14,9 +14,11 @@ if(isset($_POST["salir"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión reservas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../estilos/principal.css">
 </head>
-<body>
-    <div style="display:flex;justify-content:space-evenly" class="m-3">
+<body style="color:white; background-color: black;">
+<div class="contenedor">
+    <div style="display:flex;justify-content:space-evenly;background-color:grey; align-items: center; border-radius:10px" class="m-3 p-2">
         
         <?php
         if(isset($_SESSION["email"])){
@@ -24,6 +26,9 @@ if(isset($_POST["salir"])){
                 switch ($_SESSION["idRol"]) {
                     case 1:
                         ?>
+                        <a href="/reservas/crearReserva.php" class="btn btn-primary">Crear reserva</a>
+                        <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
+                        <a href="/reservas/verReservasPrivadas.php" class="btn btn-primary">Ver reservas personales</a>
                         <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
@@ -37,6 +42,9 @@ if(isset($_POST["salir"])){
                         <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
                         <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
                         <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
+                        <a href="/reservas/verReservasMesas.php" class="btn btn-primary">Ver reservas</a>
+                        <a href="/reservas/crearReserva.php" class="btn btn-primary">Crear reserva</a>
+                        <a href="/reservas/verReservasPrivadas.php" class="btn btn-primary">Ver reservas personales</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
@@ -48,6 +56,9 @@ if(isset($_POST["salir"])){
                         <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
                         <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
                         <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
+                        <a href="/reservas/verReservasMesas.php" class="btn btn-primary">Ver reservas</a>
+                        <a href="/reservas/crearReserva.php" class="btn btn-primary">Crear reserva</a>
+                        <a href="/reservas/verReservasPrivadas.php" class="btn btn-primary">Ver reservas personales</a>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                             <input type="submit" name="salir" value="salir">
                         </form>
