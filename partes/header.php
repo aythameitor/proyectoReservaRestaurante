@@ -73,7 +73,7 @@ if (isset($_POST["salir"])) {
                         case 2:
                         ?>
                             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                <a class="navbar-brand ml-1 btn btn-primary" href="/index.php">Inicio</a>
+                                <a class="navbar-brand ml-1" href="/index.php"><img src="/img/elpotelogo.png" class="imagen" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
