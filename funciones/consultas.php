@@ -1,5 +1,5 @@
 <?php
-$config = include '../config.php';
+
 //Selecciona un campo único de la tabla usuarios para realizar comprobaciones usando como condición el email
 function select($campo, $email, $conexion)
 {
@@ -19,6 +19,7 @@ function selectMesa($campo, $idMesa, $conexion)
     return $consulta;
 }
 function conexion(){
+    $config = include '../config.php';
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     return $conexion;
