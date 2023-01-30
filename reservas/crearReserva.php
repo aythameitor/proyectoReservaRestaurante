@@ -10,14 +10,21 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
 }
 
 try {
+    //Crea la conexión
+    $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
+    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+
+    //Realiza la consulta que recoge las mesas totales para el posterior select
+    $totalMesas = "select * from mesas";
+    $consultaTotalMesas = $conexion->prepare($totalMesas);
+    $consultaTotalMesas->execute();
+
     if (isset($_POST["submit"])) {
         $fechaReserva = strip_tags(trim($_POST["fechaReserva"]));
         $horaReserva = strip_tags(trim($_POST["horaReserva"]));
         $numeroMesa = strip_tags(trim($_POST["numeroMesa"]));
 
-        $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-
+        //Recoge el id de usuario para crear la reserva
         $sqlId = "select idUsuario from usuarios where email = :email";
         $consultaSqlId = $conexion->prepare($sqlId);
         $consultaSqlId->bindParam(":email", $_SESSION["email"]);
@@ -25,6 +32,7 @@ try {
 
         $idUsuario = $consultaSqlId->fetchColumn();
 
+        //Recoge el id de mesa para crear la reserva
         $sqlMesa = "select idMesa from mesas where numeroMesa = :numeroMesa";
         $consultaSqlMesa = $conexion->prepare($sqlMesa);
         $consultaSqlMesa->bindParam(":numeroMesa", $numeroMesa);
@@ -32,19 +40,24 @@ try {
 
         $idMesa = $consultaSqlMesa->fetchColumn();
 
+        //concatena fecha y hora para dejarlo en un formato que MySQL entienda como timestamp
         $fechaYHora = $fechaReserva . " " . $horaReserva;
+
+        //inserta los valores
         $sql = "insert into reservas (idUsuario, idMesa, fechaReserva) values ( :idUsuario, :idMesa, :fechaReserva)";
         $consulta = $conexion->prepare($sql);
         $consulta->bindParam(":idUsuario", $idUsuario);
         $consulta->bindParam(":idMesa", $idMesa);
         $consulta->bindParam(":fechaReserva", $fechaYHora);
         $consulta->execute();
+
         if ($consulta->rowCount() == 1) {
             $mensajeExito = "Reserva añadida con éxito";
         } else {
             $mensajeFallo = "No se ha podido añadir la reserva, la mesa solicitada puede no estar disponible para esa hora y día";
         }
     }
+
 } catch (PDOException $error) {
     $error = "No se ha podido añadir la reserva, la mesa solicitada puede no estar disponible para esa hora y día";
 }
@@ -78,12 +91,12 @@ if (isset($mensajeFallo)) {
 
 <?php
 if ($error) {
-?>
+    ?>
     <div class="container p-2">
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-danger" role="alert">
-                    <?= $error ?>
+                    <?=$error?>
                 </div>
             </div>
         </div>
@@ -113,7 +126,14 @@ if ($error) {
         </div>
         <div class="form-group">
             <label>Numero de mesa:</label>
-            <input type="text" name="numeroMesa" />
+            <select name="numeroMesa">
+                <?php
+                foreach ($consultaTotalMesas->fetchAll() as $value) {
+                    echo "<option value='" . $value["numeroMesa"] . "'>" . $value["numeroMesa"] . "</option>";
+                }
+                ?>
+            </select>
+
         </div>
         <br /><br />
         <input type="submit" value="submit" name="submit" /><br />
@@ -122,4 +142,4 @@ if ($error) {
 <script>
 document.getElementById('fechaReserva').valueAsDate = new Date();
     </script>
-<?php include '../partes/footer.php' ?>
+<?php include '../partes/footer.php'?>

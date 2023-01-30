@@ -12,11 +12,13 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"]) || $_SESSION["idRol
 try {
     $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    //Comprueba si eres administrador
     if(select("idRol", $_SESSION["email"], $conexion)->fetchColumn()<2){
         header("location:../login.php");
         die();
     }
     if (isset($_GET["reserva"]) && $_SESSION["idRol"] >= 2) {
+        //Realiza la consulta de eliminar
         $eliminar = "DELETE FROM reservas WHERE fechaReserva=:fechaReserva AND idMesa=:idMesa";
         $borrar = $conexion->prepare($eliminar);
         $varReserva = strip_tags(trim($_GET["reserva"]));
@@ -26,6 +28,7 @@ try {
         $borrar->execute();
     }
 
+    //Recoge el total de mesas y las ordenas por fecha
     $consultaSQL = 'select * from reservas order by fechaReserva DESC';
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
@@ -73,7 +76,6 @@ if ($error) {
                 <th>Nombre de usuario</th>
                 <th>numero de mesa</th>
                 <th>Eliminar</th>
-                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -107,9 +109,6 @@ if ($error) {
                         </td>
                         <td>
                             <a href="verReservasMesas.php?reserva=<?= $fila["fechaReserva"] ?>&idReserva=<?= $fila["idMesa"] ?>">Eliminar</a>
-                        </td>
-                        <td>
-                            <a href="verReservasMesas.php?editar=<?= $fila["idMesa"] ?>">Editar</a>
                         </td>
                     </tr>
             <?php

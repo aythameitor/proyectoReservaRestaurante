@@ -19,14 +19,14 @@ try {
         $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
 
-        $sqlId = "select idUsuario from usuarios where email = :email";
-        $consultaSqlId = $conexion->prepare($sqlId);
-        $consultaSqlId->bindParam(":email", $emailPre);
-        $consultaSqlId->execute();
-        
+        //Se recoge el id para su posterior uso
+        $consultaSqlId = select("idUsuario", $emailPre, $conexion);
+        $idUsuario = $consultaSqlId->fetchColumn();
+
+        //Se recoge la contraseña para su posterior uso
         $consultaConstrasena = select("contrasena", $emailPre, $conexion);
         
-        $idUsuario = $consultaSqlId->fetchColumn();
+        //Si $emailPost está vacío, el email se mantiene igual, se realiza comprobación de la contraseña y se le asigna la nueva
         if ($emailPost == "") {
             if (password_verify($contrasenaPre, $consultaConstrasena->fetchColumn())) {
                 $sql = "update usuarios set actualizado = null, contrasena = :contrasenaPost where idUsuario = :idUsuario";

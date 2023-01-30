@@ -1,4 +1,7 @@
 <?php
+
+//Array de config de la base de datos
+
     return [
         'db' => [
             'host' => 'mysql:host=localhost',

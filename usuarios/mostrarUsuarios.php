@@ -2,31 +2,38 @@
 session_name("reservaRestaurante");
 session_start();
 $error = false;
-$config = include '../config.php';
+
 include "../funciones/consultas.php";
 if(!isset($_SESSION["email"])){
     header("location:../login.php");
     die();
 }
 try{
-    $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
-    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    $conexion = conexion();
     if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 2){
         header("location:/index.php");
         die();
     };
+
+    //Se comprueba el id de la sesión y si se recibe un get de eliminar, en ese caso
+    //se comprueba el id del usuario a eliminar para evitar eliminar superadmins
+    //en caso de no ser superadmin se elimina
     if(isset($_GET["eliminar"]) && $_SESSION["idRol"] == 3){
+        $idEliminar = codificarHTML(strip_tags(trim($_GET["eliminar"])));
         $comprobar = "SELECT idRol from usuarios where IdUsuario = :idUsuario";
         $consultaCompr = $conexion->prepare($comprobar);
-        $consultaCompr->bindParam(":idUsuario", $_GET["eliminar"]);
+        $consultaCompr->bindParam(":idUsuario", $idEliminar);
         $consultaCompr->execute();
 
+        //
             if($consultaCompr->fetchColumn() <3){
-                $eliminar = "DELETE FROM usuarios WHERE idUsuario='". $_GET["eliminar"] ."'";
+                $eliminar = "DELETE FROM usuarios WHERE idUsuario=:idUsuario";
                 $borrar = $conexion->prepare($eliminar);
+                $borrar->bindParam(":idUsuario", $idEliminar);
                 $borrar->execute();
             }
     }
+    //Se seleccionan los usuarios para cargar la lista con el usuario ya borrado
     $consultaSQL = 'select * from usuarios';
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();

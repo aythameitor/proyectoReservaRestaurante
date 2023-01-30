@@ -1,4 +1,7 @@
 <?php
+
+//Realiza la instalación de la BBDD en el servidor correspondiente
+
 $config = include '../config.php';
 try {
     $conexion = new PDO($config['db']['host'], $config['db']['user'], $config['db']['pass'], $config['db']['options']);
