@@ -31,23 +31,17 @@ if (isset($_POST["salir"])) {
                     switch ($_SESSION["idRol"]) {
                         case 1:
             ?>
-                            <a href="/reservas/crearReserva.php" class="btn btn-primary">Crear reserva</a>
-                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
-                            <a href="/reservas/verReservasPrivadas.php" class="btn btn-primary">Ver reservas personales</a>
-                            <a href="/usuarios/editarUsuario.php" class="btn btn-primary">Editar tu cuenta</a>
-                            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-                                <input type="submit" name="salir" value="salir">
-                            </form>
+                            
                             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                <a class="navbar-brand ml-1 btn btn-primary" href="/index.php">Inicio</a>
+                                <a class="navbar-brand ml-1" href="/index.php"><img src="/img/elpotelogo.png" class="imagen" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav justify-content-between w-100">
+                                    <ul class="navbar-nav justify-content-around w-100">
                                         <li class="nav-item">
-                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
+                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas disponibles</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="/reservas/crearReserva.php" class="btn btn-primary">Crear reserva</a>
@@ -87,7 +81,7 @@ if (isset($_POST["salir"])) {
                                             <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
+                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas disponibles</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="/reservas/verReservasMesas.php" class="btn btn-primary">Ver reservas</a>
@@ -114,7 +108,7 @@ if (isset($_POST["salir"])) {
                         case 3:
                         ?>
                             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                <a class="navbar-brand ml-1 btn btn-primary" href="/index.php">Inicio</a>
+                                    <a class="navbar-brand ml-1" href="/index.php"><img src="/img/elpotelogo.png" class="imagen" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
@@ -128,7 +122,7 @@ if (isset($_POST["salir"])) {
                                             <a href="/usuarios/mostrarUsuarios.php" class="btn btn-primary">Usuarios</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas</a>
+                                            <a href="/mesas/mostrarMesas.php" class="btn btn-primary">Mesas disponibles</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="/reservas/verReservasMesas.php" class="btn btn-primary">Ver reservas</a>
@@ -160,7 +154,7 @@ if (isset($_POST["salir"])) {
                 
                 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                <a class="navbar-brand ml-1 btn btn-primary" href="/index.php">Inicio</a>
+                                <a class="navbar-brand ml-1" href="/index.php"><img src="/img/elpotelogo.png" class="imagen" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
