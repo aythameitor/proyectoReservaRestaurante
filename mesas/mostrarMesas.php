@@ -5,7 +5,7 @@ $error = false;
 $config = include '../config.php';
 include "../funciones/consultas.php";
 if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
-    header("location:../confirmacion.php");
+    header("location:../index.php");
     die();
 }
 try {
@@ -89,7 +89,7 @@ if ($error) {
 
             <form action="" method="post">
                 <div class="row">
-                    <label style="display:flex; align-items:center">numeroMesa:</label>
+                    <label style="display:flex; align-items:center">Añadir mesa con número:</label>
                     <input class="m-3" type="text" name="numeroMesa" /><br /><br />
 
                     <input class="m-3" type="submit" value="submit" /><br />
@@ -145,9 +145,9 @@ if ($error) {
                 </tbody>
             </table>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-12">
-                <a href="../confirmacion.php" class="btn btn-primary">Volver al inicio</a>
+                <a href="../index.php" class="btn btn-primary">Volver al inicio</a>
             </div>
         </div>
     </div>

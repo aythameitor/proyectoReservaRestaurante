@@ -5,7 +5,7 @@ $error = false;
 $config = include '../config.php';
 include "../funciones/consultas.php";
 if(!isset($_SESSION["email"]) || !isset($_SESSION["idRol"]) || $_SESSION["idRol"] <2){
-    header("location:../confirmacion.php");
+    header("location:../index.php");
     die();
 }
 try {
@@ -42,7 +42,7 @@ try{
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 2){
-        header("location:/confirmacion.php");
+        header("location:/index.php");
         die();
     };
     $numeroMesa = strip_tags(trim($_GET["numeroMesa"]));

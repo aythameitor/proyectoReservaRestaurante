@@ -12,7 +12,7 @@ try{
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 2){
-        header("location:/confirmacion.php");
+        header("location:/index.php");
         die();
     };
     if(isset($_GET["eliminar"]) && $_SESSION["idRol"] == 3){
@@ -110,7 +110,7 @@ try{
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="../confirmacion.php" class="btn btn-primary">Volver al inicio</a>
+                <a href="../index.php" class="btn btn-primary">Volver al inicio</a>
             </div>
         </div>
     </div>

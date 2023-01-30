@@ -5,7 +5,7 @@ $config = include 'config.php';
 include "funciones/consultas.php";
 
 if(isset($_SESSION["email"])){
-    header("location:confirmacion.php");
+    header("location:index.php");
     die();
 }
 try {
@@ -22,7 +22,7 @@ try {
         if ($cuenta == 1 && password_verify($contrasena, $consultaConstrasena->fetchColumn())) {
             $_SESSION['email'] = $email;
             $_SESSION['idRol'] = $idRol->fetchColumn();
-            header("location:confirmacion.php");
+            header("location:index.php");
             die();
         } else {
             $error = "El email o contraseña no son válidos";

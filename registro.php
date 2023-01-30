@@ -37,7 +37,7 @@ try {
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
         $idRol = $_SESSION["idRol"];
         if($idRol == 1){
-            header("location:confirmacion.php");
+            header("location:index.php");
             die();
         }
     }
