@@ -33,14 +33,26 @@ require 'partes/header.php';
 ?>
 <div class="container">
     <?php
-    if(isset($error)){
-        echo "<p>" . $error . "</p>";
-    }
+if (isset($error)) {
     ?>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">
+                    <?=$error?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
+
     <form action="" method="post">
-        <label>UserName :</label><input type="text" name="email" /><br /><br />
-        <label>Password :</label><input type="password" name="contrasena" /><br /><br />
-        <input type="submit" value=" Submit " /><br />
+    <h2 class="m-5">Login</h2>
+        <label>Usuario :</label><input type="text" name="email" /><br /><br />
+        <label>Constraseña :</label><input type="password" name="contrasena" /><br /><br />
+        <input type="submit" value="Enviar" /><br />
     </form>
 </div>
 <?php

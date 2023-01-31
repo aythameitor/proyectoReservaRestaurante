@@ -47,19 +47,50 @@ try {
     $error = $error->getMessage();
 }
 
-if(isset($mensajeExito)){
-    echo "<p>" . $mensajeExito . "</p>";
-}
-if(isset($mensajeFallo)){
-    echo "<p>" . $mensajeFallo . "</p>";
-}
-if(isset($error)){
-    echo $error;
-}
 require 'partes/header.php';
+
+if (isset($mensajeExito)) {
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                 $mensajeExito
+            </div>
+        </div>
+    </div>
+</div>";
+}
+if (isset($mensajeFallo)) {
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                 $mensajeFallo 
+            </div>
+        </div>
+    </div>
+</div>";
+}?>
+
+<?php
+if (isset($error)) {
+    ?>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">
+                    <?=$error?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
 ?>
+
 <div class="container">
     <form action="" method="post">
+    <h2 class="m-5">Registro</h2>
         <label>Usuario:</label><input type="text" name="email" /><br /><br />
         <label>Contraseña:</label><input type="password" name="contrasena" /><br /><br />
         <?php
@@ -74,7 +105,7 @@ require 'partes/header.php';
         }
            
         ?>
-        <input type="submit" value=" Submit " /><br />
+        <input type="submit" value="Enviar" /><br />
     </form>
 </div>
 <?php

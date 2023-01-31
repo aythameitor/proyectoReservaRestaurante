@@ -87,15 +87,46 @@ try {
 
 <?php include '../partes/header.php';
 
+
 if (isset($mensajeExito)) {
-    echo "<p>" . $mensajeExito . "</p>";
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                 $mensajeExito
+            </div>
+        </div>
+    </div>
+</div>";
 }
 if (isset($mensajeFallo)) {
-    echo "<p>" . $mensajeFallo . "</p>";
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                $mensajeFallo 
+            </div>
+        </div>
+    </div>
+</div>";
+}?>
+
+<?php
+if ($error) {
+    ?>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">
+                    <?=$error?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 }
-if (isset($error)) {
-    echo $error;
-} ?>
+?>
+
 
 <?php
 if ($error) {
@@ -113,8 +144,9 @@ if ($error) {
 }
 ?>
 
-<div>
+<div class="container">
     <form action="" method="post">
+        <h2 class="m-5">Edita tu cuenta:</h2>
         <div class="form-group">
             <label>Email antiguo:</label>
             <input type="text" name="emailPre" value="<?= $_SESSION["email"] ?>" />
@@ -132,7 +164,7 @@ if ($error) {
             <input type="password" name="contrasenaPost" />
         </div>
         <br /><br />
-        <input type="submit" value="submit" name="submit" /><br />
+        <input type="submit" value="Enviar" name="submit" /><br />
     </form>
 </div>
 

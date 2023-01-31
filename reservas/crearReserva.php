@@ -81,7 +81,7 @@ if (isset($mensajeFallo)) {
     <div class='row'>
         <div class='col-md-12'>
             <div class='alert alert-danger' role='alert'>
-                <?= $mensajeFallo ?>
+               $mensajeFallo 
             </div>
         </div>
     </div>
@@ -104,8 +104,9 @@ if ($error) {
 }
 ?>
 
-<div>
+<div class="container">
     <form action="" method="post">
+    <h2 class="m-5">Crear reserva:</h2>
         <div class="form-group">
             <label>Fecha de reserva:</label>
             <input type="date" name="fechaReserva" id="fechaReserva"/>
@@ -135,7 +136,7 @@ if ($error) {
 
         </div>
         <br /><br />
-        <input type="submit" value="submit" name="submit" /><br />
+        <input type="submit" value="Enviar" name="submit" /><br />
     </form>
 </div>
 <script>

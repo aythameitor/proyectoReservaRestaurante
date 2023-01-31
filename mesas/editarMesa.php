@@ -78,15 +78,46 @@ try {
 <?php include '../partes/header.php';
 //se comprueba si existen los mensajes y se muestran, por como está organizado el código, 
 //no puede haber dos mensajes simultáneos 
+
 if (isset($mensajeExito)) {
-    echo "<p>" . $mensajeExito . "</p>";
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                 $mensajeExito
+            </div>
+        </div>
+    </div>
+</div>";
 }
 if (isset($mensajeFallo)) {
-    echo "<p>" . $mensajeFallo . "</p>";
+    echo "<div class='container p-2'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='alert alert-danger' role='alert'>
+                 $mensajeFallo 
+            </div>
+        </div>
+    </div>
+</div>";
+}?>
+
+<?php
+if ($error) {
+    ?>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">
+                    <?=$error?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 }
-if (isset($error)) {
-    echo $error;
-} ?>
+?>
+
 
 <?php
 if ($error) {
@@ -123,7 +154,7 @@ if ($error) {
                                                     ?>" />
         <br /><br />
 
-        <input type="submit" value="submit" /><br />
+        <input type="submit" value="Enviar" /><br />
     </form>
 </div>
 
