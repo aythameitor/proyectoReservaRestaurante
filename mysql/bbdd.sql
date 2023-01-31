@@ -39,5 +39,5 @@ INSERT INTO `roles` (`nombre`) VALUES ('superadmin');
 INSERT INTO `usuarios` (`email`, `contrasena`,`idRol`) VALUES ('admin@administrador.com','$2y$10$iuhTcWOXiiREYcS0Tl2lcucGkqFq0zx3o6njkOXHe.A6YTv0BOkJS',3);
 INSERT INTO `mesas` (`idMesa`, `numeroMesa`) VALUES (1,1);
 /*
-    La contraseña del usuario por defecto con superadmin es root, está encriptada en el Hash que usa php por defecto
+   La contraseña del usuario por defecto con superadmin es root, está encriptada en el Hash que usa php por defecto
 */
