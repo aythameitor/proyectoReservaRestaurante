@@ -1,7 +1,6 @@
 <?php
 session_name("reservaRestaurante");
 session_start();
-$config = include 'config.php';
 include "funciones/consultas.php";
 
 if(isset($_SESSION["email"])){
@@ -13,8 +12,7 @@ try {
         $email = strip_tags(trim($_POST["email"]));
         $contrasena = strip_tags(trim($_POST["contrasena"]));
         
-        $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+        $conexion = conexion();
         $consulta = select("idUsuario", $email, $conexion);
         $idRol = select("idRol", $email, $conexion);
         $consultaConstrasena = select("contrasena", $email, $conexion);

@@ -1,7 +1,7 @@
 <?php 
 session_name("reservaRestaurante");
 session_start();
-$config = include 'config.php';
+
 include "funciones/consultas.php";
 
 include "partes/header.php"; ?>

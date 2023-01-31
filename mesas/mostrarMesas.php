@@ -3,7 +3,6 @@
 session_name("reservaRestaurante");
 session_start();
 $error = false;
-$config = include '../config.php';
 include "../funciones/consultas.php";
 include "../funciones/codificar.php";
 //Como esta es una página pública, pero requiere registro, se comprueba que la sesión
@@ -16,26 +15,29 @@ try {
     //Este if comprueba si vienes del método POST, si vienes con el mismo, significa que quieres añadir una mesa nueva
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Se crea la conexión y se recoge y procesa el número de mesa enviado
-        $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+        $conexion = conexion();
         $numeroMesa = codificarHTML(strip_tags(trim($_POST["numeroMesa"])));
-        
-        //Se realiza una consulta a la base de datos con tu email y se comprueba el resultado
-        if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() > 2) {
-            $comprobacion = "SELECT numeroMesa FROM mesas WHERE numeroMesa = $numeroMesa";
-            $consultaCompr = $conexion->prepare($comprobacion);
-            $consultaCompr->execute();
+        //comprueba que sea un número
+        if (filter_var($numeroMesa, FILTER_VALIDATE_INT) == false) {
+            $mensajeFallo = "Por favor introduce un número";
+        } else {
+            //Se realiza una consulta a la base de datos con tu email y se comprueba el resultado
+            if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() > 2) {
+                $comprobacion = "SELECT numeroMesa FROM mesas WHERE numeroMesa = $numeroMesa";
+                $consultaCompr = $conexion->prepare($comprobacion);
+                $consultaCompr->execute();
 
-            //Si la consulta devuelve 1 fila significa que ya existe una mesa con ese número, los cuales son únicos
-            if ($consultaCompr->rowCount() == 1) {
-                $mensajeFallo = "Ya existe una mesa con ese número, por favor introduce otro";
-            } else {
-                //y si no, se inserta la nueva mesa
-                $sql = "insert into mesas (numeroMesa) values (:numeroMesa)";
-                $consulta = $conexion->prepare($sql);
-                $consulta->bindParam(":numeroMesa", $numeroMesa, PDO::PARAM_STR);
-                $consulta->execute();
-                $mensajeExito = "Mesa añadida con éxito";
+                //Si la consulta devuelve 1 fila significa que ya existe una mesa con ese número, los cuales son únicos
+                if ($consultaCompr->rowCount() == 1) {
+                    $mensajeFallo = "Ya existe una mesa con ese número, por favor introduce otro";
+                } else {
+                    //y si no, se inserta la nueva mesa
+                    $sql = "insert into mesas (numeroMesa) values (:numeroMesa)";
+                    $consulta = $conexion->prepare($sql);
+                    $consulta->bindParam(":numeroMesa", $numeroMesa, PDO::PARAM_STR);
+                    $consulta->execute();
+                    $mensajeExito = "Mesa añadida con éxito";
+                }
             }
         }
     }
@@ -43,9 +45,8 @@ try {
     $error = $error->getMessage();
 }
 try {
-    $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-    
+    $conexion = conexion();
+
     //Selecciona el id del rol en base
     if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() > 2) {
         //Comprueba si existe el id de la mesa a eliminar
@@ -97,7 +98,7 @@ if ($error) {
 }
 ?>
 <div class="container">
-    <?php 
+    <?php
     //Si el idRol es superior a 1, significa que eres admin o superadmin por lo que puedes añadir mesa
     if ($_SESSION["idRol"] > 1) {
     ?>
@@ -122,7 +123,7 @@ if ($error) {
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        
+
                         <th>Número de mesa</th>
                         <?php
                         if ($_SESSION["idRol"] > 1) {
@@ -142,7 +143,7 @@ if ($error) {
                         foreach ($mesas as $fila) {
                     ?>
                             <tr>
-                                
+
                                 <td><?php echo $fila["numeroMesa"]; ?></td>
                                 <?php if ($_SESSION["idRol"] > 1) {
                                 ?>

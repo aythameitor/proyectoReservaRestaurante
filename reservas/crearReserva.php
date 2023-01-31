@@ -2,7 +2,7 @@
 session_name("reservaRestaurante");
 session_start();
 $error = false;
-$config = include '../config.php';
+
 include "../funciones/consultas.php";
 if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
     header("location:../login.php");
@@ -11,8 +11,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
 
 try {
     //Crea la conexión
-    $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    $conexion = conexion();
 
     //Realiza la consulta que recoge las mesas totales para el posterior select
     $totalMesas = "select * from mesas";
@@ -23,7 +22,7 @@ try {
         $fechaReserva = strip_tags(trim($_POST["fechaReserva"]));
         $horaReserva = strip_tags(trim($_POST["horaReserva"]));
         $numeroMesa = strip_tags(trim($_POST["numeroMesa"]));
-
+        
         //Recoge el id de usuario para crear la reserva
         $sqlId = "select idUsuario from usuarios where email = :email";
         $consultaSqlId = $conexion->prepare($sqlId);

@@ -19,7 +19,7 @@ function selectMesa($campo, $idMesa, $conexion)
     return $consulta;
 }
 function conexion(){
-    $config = include '../config.php';
+    $config = include $_SERVER['DOCUMENT_ROOT'].'/config.php';
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     return $conexion;

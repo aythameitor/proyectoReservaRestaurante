@@ -4,12 +4,14 @@ session_start();
 $error = false;
 
 include "../funciones/consultas.php";
+include "../funciones/codificar.php";
 if(!isset($_SESSION["email"])){
     header("location:../login.php");
     die();
 }
 try{
     $conexion = conexion();
+    
     if(select("idRol",$_SESSION["email"], $conexion)->fetchColumn() < 2){
         header("location:/index.php");
         die();

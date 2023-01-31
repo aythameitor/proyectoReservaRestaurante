@@ -2,7 +2,7 @@
 session_name("reservaRestaurante");
 session_start();
 $error = false;
-$config = include '../config.php';
+
 include "../funciones/consultas.php";
 if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
     header("location:../login.php");
@@ -10,8 +10,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["idRol"])) {
 }
 
 try {
-    $dsn = $config['db']['host'] . ';dbname=' . $config['db']['name'];
-    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    $conexion = conexion();
 
     //Recoge el id del usuario para luego usarlo    
     $idUsuarioSQL = 'select idUsuario from usuarios where email = :email';
