@@ -10,6 +10,7 @@ try {
         $contrasena = password_hash($_POST["contrasena"], PASSWORD_DEFAULT);
         $conexion = conexion();
         $consultaComprobacion = select("idUsuario", $email, $conexion);
+        //valida que el campo sea un email, y en caso de serlo comprueba si hay post de admin y si tu idRol es de superadmin
         if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
             $mensajeFallo = "Por favor, introduce un email válido";
         } else{
