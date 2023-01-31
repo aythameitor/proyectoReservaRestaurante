@@ -22,7 +22,7 @@ try {
             $mensajeFallo = "Por favor introduce un número";
         } else {
             //Se realiza una consulta a la base de datos con tu email y se comprueba el resultado
-            if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() > 2) {
+            if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() >= 2) {
                 $comprobacion = "SELECT numeroMesa FROM mesas WHERE numeroMesa = $numeroMesa";
                 $consultaCompr = $conexion->prepare($comprobacion);
                 $consultaCompr->execute();
@@ -48,7 +48,7 @@ try {
     $conexion = conexion();
 
     //Selecciona el id del rol en base
-    if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() > 2) {
+    if (select("idRol", $_SESSION["email"], $conexion)->fetchColumn() >= 2) {
         //Comprueba si existe el id de la mesa a eliminar
         if (isset($_GET["eliminar"])) {
             $id = strip_tags(trim($_GET["eliminar"]));
