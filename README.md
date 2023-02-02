@@ -1,4 +1,4 @@
-Proyecto de reservas de un restaurante
+**Proyecto de reservas de un restaurante**
 
 El proyecto consta de diferentes áreas, entre las cuales se pueden distinguir 3 roles principales, usuario (por defecto), administrador y superadministrador.
 
