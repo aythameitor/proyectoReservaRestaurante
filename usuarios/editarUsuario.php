@@ -1,4 +1,12 @@
 <?php
+/**
+ * Se encarga de la edición del usuario personal de cada uno
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ * @throws PDOException
+ * @uses /funciones/codificar.php
+ * @uses /funciones/consultas.php
+ */
 session_name("reservaRestaurante");
 session_start();
 $error = false;

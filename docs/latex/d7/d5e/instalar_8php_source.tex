@@ -1,0 +1,20 @@
+\hypertarget{instalar_8php_source}{}\doxysection{instalar.\+php}
+\label{instalar_8php_source}\index{C:/Users/2daw/Desktop/proyecto/instalar/instalar.php@{C:/Users/2daw/Desktop/proyecto/instalar/instalar.php}}
+\mbox{\hyperlink{instalar_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00003}00003\ \textcolor{comment}{//Realiza\ la\ instalación\ de\ la\ BBDD\ en\ el\ servidor\ correspondiente}}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00005}\mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{00005}}\ \mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}\ =\ include\ \textcolor{stringliteral}{'../config.php'};}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00006}\mbox{\hyperlink{instalar_8php_abe4cc9788f52e49485473dc699537388}{00006}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \textcolor{keyword}{new}\ PDO(\mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}[\textcolor{stringliteral}{'db'}][\textcolor{stringliteral}{'host'}],\ \mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}[\textcolor{stringliteral}{'db'}][\textcolor{stringliteral}{'user'}],\ \mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}[\textcolor{stringliteral}{'db'}][\textcolor{stringliteral}{'pass'}],\ \mbox{\hyperlink{instalar_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}[\textcolor{stringliteral}{'db'}][\textcolor{stringliteral}{'options'}]);}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00008}\mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{00008}}\ \ \ \ \ \mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}}\ =\ file\_get\_contents(\textcolor{stringliteral}{'../mysql/bbdd.sql'});}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>exec(\mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}});}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00010}00010\ \ \ \ \ echo\ \textcolor{stringliteral}{'La\ base\ de\ datos\ y\ la\ tabla\ de\ login\ se\ han\ creado\ con\ éxito'};}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00011}\mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{00011}}\ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00012}00012\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00013}00013\ \ \ \ \ echo\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{instalar_8php_source_l00014}00014\ \}}
+
+\end{DoxyCode}

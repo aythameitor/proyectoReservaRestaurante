@@ -1,0 +1,177 @@
+\hypertarget{editar_usuario_8php_source}{}\doxysection{editar\+Usuario.\+php}
+\label{editar_usuario_8php_source}\index{C:/Users/2daw/Desktop/proyecto/usuarios/editarUsuario.php@{C:/Users/2daw/Desktop/proyecto/usuarios/editarUsuario.php}}
+\mbox{\hyperlink{editar_usuario_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00010}00010\ session\_name(\textcolor{stringliteral}{"{}reservaRestaurante"{}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00011}00011\ session\_start();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00012}\mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{00012}}\ \mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00014}00014\ include\ \textcolor{stringliteral}{"{}../funciones/consultas.php"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00015}00015\ \textcolor{keywordflow}{if}\ (!isset(\$\_SESSION[\textcolor{stringliteral}{"{}email"{}}])\ ||\ !isset(\$\_SESSION[\textcolor{stringliteral}{"{}idRol"{}}]))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00016}00016\ \ \ \ \ header(\textcolor{stringliteral}{"{}location:../login.php"{}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00017}00017\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00020}\mbox{\hyperlink{editar_usuario_8php_a485464b6f3684a0954262edc77f3ff31}{00020}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$\_POST[\textcolor{stringliteral}{"{}submit"{}}]))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \$emailPre\ =\ strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}emailPre"{}}]));}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ \$emailPost\ =\ strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}emailPost"{}}]));}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ \$contrasenaPre\ =\ strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}contrasenaPre"{}}]));}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00025}00025\ \ \ \ \ \ \ \ \ \$contrasenaPost\ =\ password\_hash(strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}contrasenaPost"{}}])),\ PASSWORD\_DEFAULT);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Inicio\ conexión}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//validación\ del\ antiguo\ email\ y\ confirmación\ de\ que\ los\ campos\ no\ están\ vacíos}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filter\_var(\$emailPre,\ FILTER\_VALIDATE\_EMAIL)\ ==\ \textcolor{keyword}{false}\ ||\ \$emailPre\ ==\ \textcolor{stringliteral}{"{}"{}}\ ||\ \$contrasenaPre\ ==\ \textcolor{stringliteral}{"{}"{}}\ ||\ \$contrasenaPost\ ==\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}Asegúrate\ de\ haber\ introducido\ datos\ válidos\ en\ los\ campos"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ recoge\ el\ id\ para\ su\ posterior\ uso}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaSqlId\ =\ \mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}idUsuario"{}},\ \$emailPre,\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ver_reservas_privadas_8php_a5f71f03983e93ac5855a78b355f59291}{\$idUsuario}}\ =\ \$consultaSqlId-\/>fetchColumn();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ recoge\ la\ contraseña\ para\ su\ posterior\ uso}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaConstrasena\ =\ \mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}contrasena"{}},\ \$emailPre,\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ \$emailPost\ está\ vacío,\ el\ email\ se\ mantiene\ igual,\ se\ realiza\ comprobación\ de\ la\ contraseña\ y\ se\ le\ asigna\ la\ nueva}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$emailPost\ ==\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (password\_verify(\$contrasenaPre,\ \$consultaConstrasena-\/>fetchColumn()))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}}\ =\ \textcolor{stringliteral}{"{}update\ usuarios\ set\ actualizado\ =\ null,\ contrasena\ =\ :contrasenaPost\ where\ idUsuario\ =\ :idUsuario"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta\ =\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>prepare(\mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:contrasenaPost"{}},\ \$contrasenaPost);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:idUsuario"{}},\ \mbox{\hyperlink{ver_reservas_privadas_8php_a5f71f03983e93ac5855a78b355f59291}{\$idUsuario}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>execute();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$consulta-\/>rowCount()\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeExito\ =\ \textcolor{stringliteral}{"{}Usuario\ modificado\ con\ éxito"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}No\ se\ ha\ podido\ modificar\ el\ usuario,\ ha\ ocurrido\ un\ error\ inesperado"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}La\ contraseña\ anterior\ no\ coincide\ con\ la\ almacenada"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$comprobacion\ =\ \textcolor{stringliteral}{"{}SELECT\ email\ FROM\ usuarios\ WHERE\ email\ =\ :email"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr\ =\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>prepare(\$comprobacion);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr-\/>bindParam(\textcolor{stringliteral}{"{}:email"{}},\ \$emailPost);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr-\/>execute();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//validación\ del\ nuevo\ email}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filter\_var(\$emailPost,\ FILTER\_VALIDATE\_EMAIL)\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}Asegúrate\ de\ introducir\ un\ nuevo\ email\ válido"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$consultaCompr-\/>rowCount()\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}ese\ email\ ya\ existe,\ por\ favor,\ elige\ otro"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (password\_verify(\$contrasenaPre,\ \$consultaConstrasena-\/>fetchColumn()))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}}\ =\ \textcolor{stringliteral}{"{}update\ usuarios\ set\ email\ =\ :emailPost,\ actualizado\ =\ null,\ contrasena\ =\ :contrasenaPost\ where\ idUsuario\ =\ :idUsuario"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta\ =\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>prepare(\mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:emailPost"{}},\ \$emailPost);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:contrasenaPost"{}},\ \$contrasenaPost);}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:idUsuario"{}},\ \mbox{\hyperlink{ver_reservas_privadas_8php_a5f71f03983e93ac5855a78b355f59291}{\$idUsuario}});}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>execute();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$consulta-\/>rowCount()\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{"{}email"{}}]\ =\ \$emailPost;}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeExito\ =\ \textcolor{stringliteral}{"{}Usuario\ modificado\ con\ éxito"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}No\ se\ ha\ podido\ modificar\ el\ usuario,\ ha\ ocurrido\ un\ error\ inesperado"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}La\ contraseña\ anterior\ no\ coincide\ con\ la\ almacenada"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00090}00090\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00094}00094\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00096}00096\ <?php\ include\ \textcolor{stringliteral}{'../partes/header.php'};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00099}00099\ \textcolor{keywordflow}{if}\ (isset(\$mensajeExito))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00100}00100\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<div\ class='container\ p-\/2'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ <div\ class='row'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class='col-\/md-\/12'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class='alert\ alert-\/danger'\ role='alert'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeExito}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00108}00108\ \textcolor{stringliteral}{</div>"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00110}00110\ \textcolor{keywordflow}{if}\ (isset(\$mensajeFallo))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00111}00111\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<div\ class='container\ p-\/2'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ <div\ class='row'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class='col-\/md-\/12'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class='alert\ alert-\/danger'\ role='alert'>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ }}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00119}00119\ \textcolor{stringliteral}{</div>"{}};}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00120}00120\ \}?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00122}00122\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00123}00123\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00124}00124\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00125}00125\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container\ p-\/2"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00126}00126\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}alert\ alert-\/danger"{}}\ role=\textcolor{stringliteral}{"{}alert"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?=\mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00132}00132\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00133}00133\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00134}00134\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00136}00136\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00139}00139\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00140}00140\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00141}00141\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00142}00142\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container\ p-\/2"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00143}00143\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}alert\ alert-\/danger"{}}\ role=\textcolor{stringliteral}{"{}alert"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?=\ \mbox{\hyperlink{editar_usuario_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00149}00149\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00150}00150\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00151}00151\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00152}00152\ \}}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00153}00153\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00155}00155\ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00156}00156\ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}"{}}\ method=\textcolor{stringliteral}{"{}post"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00157}00157\ \ \ \ \ \ \ \ \ <h2\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}m-\/5"{}}>Edita\ tu\ cuenta:</h2>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00158}00158\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/group"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ <label>Email\ antiguo:</label>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}emailPre"{}}\ value=\textcolor{stringliteral}{"{}<?=\ \$\_SESSION["{}}email\textcolor{stringliteral}{"{}]\ ?>"{}}\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00161}00161\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00162}00162\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/group"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ <label>Email\ nuevo:</label>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}emailPost"{}}\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00165}00165\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00166}00166\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/group"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ <label>Contraseña\ antigua:</label>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}password"{}}\ name=\textcolor{stringliteral}{"{}contrasenaPre"{}}\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00169}00169\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00170}00170\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/group"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ <label>Contraseña\ nueva:</label>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}password"{}}\ name=\textcolor{stringliteral}{"{}contrasenaPost"{}}\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00173}00173\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00174}00174\ \ \ \ \ \ \ \ \ <br\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}Enviar"{}}\ name=\textcolor{stringliteral}{"{}submit"{}}\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00176}00176\ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00177}00177\ </div>}
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{editar_usuario_8php_source_l00179}00179\ <?php\ include\ \textcolor{stringliteral}{'../partes/footer.php'}\ ?>}
+
+\end{DoxyCode}

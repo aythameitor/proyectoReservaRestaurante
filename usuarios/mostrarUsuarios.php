@@ -1,4 +1,12 @@
 <?php
+/**
+ * Se encarga de mostrar todos los usuarios, comprueba tu rol y te permite, en caso de ser superadministrador, borrar usuarios
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ * @throws PDOException
+ * @uses /funciones/codificar.php
+ * @uses /funciones/consultas.php
+ */
 session_name("reservaRestaurante");
 session_start();
 $error = false;

@@ -1,4 +1,11 @@
 <?php 
+/**
+ * Página para usuarios no logueados o página inicial
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ * @uses /funciones/codificar.php
+ * @uses /funciones/consultas.php
+ */
 session_name("reservaRestaurante");
 session_start();
 

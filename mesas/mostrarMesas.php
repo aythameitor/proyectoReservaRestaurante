@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Se encarga de la visualización de las mesas y del manejo de las mismas solo para usuarios con el rol de administrador
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ * @throws PDOException
+ * @uses /funciones/codificar.php
+ * @uses /funciones/consultas.php
+ */
 session_name("reservaRestaurante");
 session_start();
 $error = false;

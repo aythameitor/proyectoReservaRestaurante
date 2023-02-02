@@ -1,0 +1,67 @@
+\hypertarget{login_8php_source}{}\doxysection{login.\+php}
+\label{login_8php_source}\index{C:/Users/2daw/Desktop/proyecto/login.php@{C:/Users/2daw/Desktop/proyecto/login.php}}
+\mbox{\hyperlink{login_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00009}00009\ session\_name(\textcolor{stringliteral}{"{}reservaRestaurante"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00010}00010\ session\_start();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00011}00011\ include\ \textcolor{stringliteral}{"{}funciones/consultas.php"{}};}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00013}00013\ \textcolor{keywordflow}{if}(isset(\$\_SESSION[\textcolor{stringliteral}{"{}email"{}}]))\{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00014}00014\ \ \ \ \ header(\textcolor{stringliteral}{"{}location:index.php"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00015}00015\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00017}\mbox{\hyperlink{login_8php_a5506e67f098d2f4361f0805343f43be4}{00017}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{"{}REQUEST\_METHOD"{}}]\ ==\ \textcolor{stringliteral}{"{}POST"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00019}00019\ \ \ \ \ \ \ \ \ \$email\ =\ strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}email"{}}]));}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00020}00020\ \ \ \ \ \ \ \ \ \$contrasena\ =\ strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}contrasena"{}}]));}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ \$consulta\ =\ \mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}idUsuario"{}},\ \$email,\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ \$idRol\ =\ \mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}idRol"{}},\ \$email,\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00025}00025\ \ \ \ \ \ \ \ \ \$consultaConstrasena\ =\ \mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}contrasena"{}},\ \$email,\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00026}00026\ \ \ \ \ \ \ \ \ \$cuenta\ =\ \$consulta-\/>rowCount();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$cuenta\ ==\ 1\ \&\&\ password\_verify(\$contrasena,\ \$consultaConstrasena-\/>fetchColumn()))\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'email'}]\ =\ \$email;}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'idRol'}]\ =\ \$idRol-\/>fetchColumn();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}location:index.php"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \textcolor{stringliteral}{"{}El\ email\ o\ contraseña\ no\ son\ válidos"{}};}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00036}00036\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00039}00039\ require\ \textcolor{stringliteral}{'partes/header.php'};}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00040}00040\ ?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00041}00041\ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00042}00042\ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00043}\mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{00043}}\ \textcolor{keywordflow}{if}\ (isset(\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}))\ \{}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00044}00044\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00045}00045\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container\ p-\/2"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}alert\ alert-\/danger"{}}\ role=\textcolor{stringliteral}{"{}alert"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?=\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00053}00053\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00054}00054\ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00056}00056\ ?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00058}00058\ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}"{}}\ method=\textcolor{stringliteral}{"{}post"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00059}00059\ \ \ \ \ <h2\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}m-\/5"{}}>Login</h2>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ <label>Usuario\ :</label><input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}email"{}}\ /><br\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ <label>Constraseña\ :</label><input\ type=\textcolor{stringliteral}{"{}password"{}}\ name=\textcolor{stringliteral}{"{}contrasena"{}}\ /><br\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}Enviar"{}}\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00063}00063\ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00064}00064\ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00065}00065\ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00067}00067\ require\ \textcolor{stringliteral}{'partes/footer.php'};}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00068}00068\ ?>}
+
+\end{DoxyCode}

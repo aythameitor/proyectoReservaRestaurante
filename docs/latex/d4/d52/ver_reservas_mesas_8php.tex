@@ -1,0 +1,86 @@
+\hypertarget{ver_reservas_mesas_8php}{}\doxysection{C\+:/\+Users/2daw/\+Desktop/proyecto/reservas/ver\+Reservas\+Mesas.php File Reference}
+\label{ver_reservas_mesas_8php}\index{C:/Users/2daw/Desktop/proyecto/reservas/verReservasMesas.php@{C:/Users/2daw/Desktop/proyecto/reservas/verReservasMesas.php}}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ver_reservas_mesas_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}} = false
+\item 
+\mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(!isset(\$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]})$\vert$$\vert$!isset(\$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]})$\vert$$\vert$ \$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]}$<$ 2) \mbox{\hyperlink{ver_reservas_mesas_8php_a17a30f00dec54519ea9cb22851030581}{try}}
+\item 
+\mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\char`\"{}id\+Rol\char`\"{}, \$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]}, \$\mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}) -\/$>$fetch\+Column()$<$ 2) \mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(isset(\$\+\_\+\+GET\mbox{[}\char`\"{}reserva\char`\"{}\mbox{]}) \&\& \$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]} $>$=2) \mbox{\hyperlink{ver_reservas_mesas_8php_ad191177aa9e448f93c1c53a18909f65f}{\$consulta\+SQL}} = \textquotesingle{}\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}} $\ast$ from reservas order by fecha\+Reserva DESC\textquotesingle{}
+\item 
+\mbox{\hyperlink{ver_reservas_mesas_8php_ac17e34e2481aba4d112054122cb09b8d}{\$sentencia}} = \$\mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}-\/$>$prepare(\$consulta\+SQL)
+\item 
+\mbox{\hyperlink{ver_reservas_mesas_8php_a59096ed7ecd07f948a4242a2accf51f9}{\$reservas}} = \$sentencia-\/$>$fetch\+All()
+\item 
+\mbox{\hyperlink{ver_reservas_mesas_8php_af44971fc241352d4d0093949d60e0efc}{catch}} (PDOException \$error)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ver_reservas_mesas_8php_ad191177aa9e448f93c1c53a18909f65f}\label{ver_reservas_mesas_8php_ad191177aa9e448f93c1c53a18909f65f}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!\$consultaSQL@{\$consultaSQL}}
+\index{\$consultaSQL@{\$consultaSQL}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{\$consultaSQL}{$consultaSQL}}
+{\footnotesize\ttfamily \mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\char`\"{}id\+Rol\char`\"{}, \$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]}, \$\mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}) -\/$>$fetch\+Column()$<$ 2) \mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}} (isset( \$\+\_\+\+GET\mbox{[}\char`\"{}reserva\char`\"{}\mbox{]}) \&\&\$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]} $>$=2) \$consulta\+SQL = \textquotesingle{}\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}} $\ast$ from reservas order by fecha\+Reserva DESC\textquotesingle{}}
+
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00031}{31}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+
+\mbox{\Hypertarget{ver_reservas_mesas_8php_aeba2ab722cedda53dbb7ec1a59f45550}\label{ver_reservas_mesas_8php_aeba2ab722cedda53dbb7ec1a59f45550}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!\$error@{\$error}}
+\index{\$error@{\$error}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{\$error}{$error}}
+{\footnotesize\ttfamily \$error = false}
+
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00004}{4}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+
+\mbox{\Hypertarget{ver_reservas_mesas_8php_a59096ed7ecd07f948a4242a2accf51f9}\label{ver_reservas_mesas_8php_a59096ed7ecd07f948a4242a2accf51f9}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!\$reservas@{\$reservas}}
+\index{\$reservas@{\$reservas}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{\$reservas}{$reservas}}
+{\footnotesize\ttfamily \$reservas = \$sentencia-\/$>$fetch\+All()}
+
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00034}{34}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+
+\mbox{\Hypertarget{ver_reservas_mesas_8php_ac17e34e2481aba4d112054122cb09b8d}\label{ver_reservas_mesas_8php_ac17e34e2481aba4d112054122cb09b8d}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!\$sentencia@{\$sentencia}}
+\index{\$sentencia@{\$sentencia}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{\$sentencia}{$sentencia}}
+{\footnotesize\ttfamily \$sentencia = \$\mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}-\/$>$prepare(\$consulta\+SQL)}
+
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00032}{32}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+
+\mbox{\Hypertarget{ver_reservas_mesas_8php_af44971fc241352d4d0093949d60e0efc}\label{ver_reservas_mesas_8php_af44971fc241352d4d0093949d60e0efc}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!catch@{catch}}
+\index{catch@{catch}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily catch(PDOException \$error) (\begin{DoxyParamCaption}\item[{PDOException}]{\$error }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00035}{35}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+
+\mbox{\Hypertarget{ver_reservas_mesas_8php_a17a30f00dec54519ea9cb22851030581}\label{ver_reservas_mesas_8php_a17a30f00dec54519ea9cb22851030581}} 
+\index{verReservasMesas.php@{verReservasMesas.php}!try@{try}}
+\index{try@{try}!verReservasMesas.php@{verReservasMesas.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}} (!isset( \$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]})$\vert$$\vert$!isset( \$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]})$\vert$$\vert$\$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]}$<$ 2) try (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}()}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{ver_reservas_mesas_8php_source_l00012}{12}} of file \mbox{\hyperlink{ver_reservas_mesas_8php_source}{ver\+Reservas\+Mesas.\+php}}.
+

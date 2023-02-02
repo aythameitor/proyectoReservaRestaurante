@@ -1,6 +1,6 @@
 <?php
 
-//Array de config de la base de datos
+/** Array de config de la base de datos */
 
     return [
         'db' => [

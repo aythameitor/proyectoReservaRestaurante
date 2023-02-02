@@ -1,6 +1,12 @@
 <?php
 
-//Selecciona un campo único de la tabla usuarios para realizar comprobaciones usando como condición el email
+/**
+ * Selecciona un campo único de la tabla usuarios para realizar comprobaciones usando como condición el email
+ * @param String $campo
+ * @param String $email
+ * @param String $conexion
+ * @return PDOObject $consulta
+ */
 function select($campo, $email, $conexion)
 {
     $sql = "SELECT $campo FROM usuarios WHERE email = :email";
@@ -9,7 +15,14 @@ function select($campo, $email, $conexion)
     $consulta->execute();
     return $consulta;
 }
-//Selecciona un campo único de la tabla mesas para realizar comprobaciones usando como condición el id de la mesa
+
+/**
+ * Selecciona un campo único de la tabla mesas para realizar comprobaciones usando como condición el id de la mesa
+ * @param String $campo
+ * @param String $email
+ * @param String $conexion
+ * @return PDOObject $consulta
+ */
 function selectMesa($campo, $idMesa, $conexion)
 {
     $sql = "SELECT $campo FROM mesas WHERE idMesa = :idMesa";
@@ -18,6 +31,10 @@ function selectMesa($campo, $idMesa, $conexion)
     $consulta->execute();
     return $consulta;
 }
+/**
+ * Inicializa la conexión
+ * @return PDOObject $conexion
+ */
 function conexion(){
     $config = include $_SERVER['DOCUMENT_ROOT'].'/config.php';
     $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];

@@ -1,0 +1,167 @@
+\hypertarget{editar_mesa_8php_source}{}\doxysection{editar\+Mesa.\+php}
+\label{editar_mesa_8php_source}\index{C:/Users/2daw/Desktop/proyecto/mesas/editarMesa.php@{C:/Users/2daw/Desktop/proyecto/mesas/editarMesa.php}}
+\mbox{\hyperlink{editar_mesa_8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00011}00011\ session\_name(\textcolor{stringliteral}{"{}reservaRestaurante"{}});}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00012}00012\ session\_start();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00013}\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{00013}}\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00015}\mbox{\hyperlink{editar_mesa_8php_a49c7011be9c979d9174c52a8b83e5d8e}{00015}}\ \mbox{\hyperlink{editar_mesa_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}}\ =\ include\ \textcolor{stringliteral}{'../config.php'};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00017}00017\ include\ \textcolor{stringliteral}{'../funciones/codificar.php'};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00019}00019\ include\ \textcolor{stringliteral}{"{}../funciones/consultas.php"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00020}00020\ \textcolor{comment}{//Se\ realiza\ la\ comprobación\ de\ los\ datos\ del\ usuario\ y\ del\ número\ de\ rol\ almacenado\ en\ la\ sesión}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00021}00021\ \textcolor{keywordflow}{if}\ (!isset(\$\_SESSION[\textcolor{stringliteral}{"{}email"{}}])\ ||\ !isset(\$\_SESSION[\textcolor{stringliteral}{"{}idRol"{}}])\ ||\ \$\_SESSION[\textcolor{stringliteral}{"{}idRol"{}}]\ <\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00022}00022\ \ \ \ \ header(\textcolor{stringliteral}{"{}location:../index.php"{}});}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00023}00023\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00025}\mbox{\hyperlink{editar_mesa_8php_a3310122ffae996872d2ad6da1368df89}{00025}}\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//Comprueba\ si\ el\ rol\ del\ usuario\ es\ el\ adecuado\ para\ entrar\ a\ la\ página,\ en\ caso\ de\ no\ ser\ así,\ el\ usuario\ es}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//redireccionado\ al\ inicio}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00029}\mbox{\hyperlink{editar_mesa_8php_aa5af8764920a8a356563dc6b26cbbb76}{00029}}\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\textcolor{stringliteral}{"{}idRol"{}},\ \$\_SESSION[\textcolor{stringliteral}{"{}email"{}}],\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}})-\/>fetchColumn()\ <\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}location:/index.php"{}});}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00032}00032\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//Si\ no\ es\ redireccionado\ se\ guardan\ el\ número\ e\ id\ de\ mesa\ para\ tener\ una\ persistencia\ de\ datos\ }}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//correcta\ en\ los\ formularios}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00035}\mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{00035}}\ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numeroMesa}}\ =\ \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificarHTML}}(strip\_tags(trim(\$\_GET[\textcolor{stringliteral}{"{}numeroMesa"{}}])));}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00036}\mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{00036}}\ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{\$idMesa}}\ =\ \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificarHTML}}(strip\_tags(trim(\$\_GET[\textcolor{stringliteral}{"{}idMesa"{}}])));}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00037}00037\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00040}00040\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//Comprueba\ si\ el\ método\ del\ servidor\ es\ por\ POST,\ y\ si\ es\ así,\ empieza\ a\ realizar\ las\ comprobaciones\ pertinentes\ para\ \ editar\ una\ mesa}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$\_SERVER[\textcolor{stringliteral}{"{}REQUEST\_METHOD"{}}]\ ==\ \textcolor{stringliteral}{"{}POST"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Recoge\ los\ valores\ pasados\ por\ la\ URL\ y\ el\ formulario}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numeroMesa}}\ =\ \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificarHTML}}(strip\_tags(trim(\$\_POST[\textcolor{stringliteral}{"{}numeroMesa"{}}])));}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{\$idMesa}}\ =\ \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificarHTML}}(strip\_tags(trim(\$\_GET[\textcolor{stringliteral}{"{}idMesa"{}}])));}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//comprueba\ que\ ambos\ sean\ números}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filter\_var(\mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numeroMesa}},\ FILTER\_VALIDATE\_INT)\ ==\ \textcolor{keyword}{false}\ ||\ filter\_var(\mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{\$idMesa}},\ FILTER\_VALIDATE\_INT)\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}Comprueba\ que\ ambos\ valores\ sean\ números\ y\ vuelve\ a\ intentarlo"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Con\ esos\ dos\ valores\ comprueba\ si\ el\ número\ de\ mesa\ ya\ existe}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \$comprobacion\ =\ \textcolor{stringliteral}{"{}SELECT\ numeroMesa\ FROM\ mesas\ WHERE\ numeroMesa\ =\ :numeroMesa"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr\ =\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>prepare(\$comprobacion);}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr-\/>bindParam(\textcolor{stringliteral}{"{}:numeroMesa"{}},\ \mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numeroMesa}});}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \$consultaCompr-\/>execute();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//En\ caso\ de\ devolver\ 1\ significa\ que\ el\ número\ de\ mesa\ estaría\ repetido,\ por\ lo\ que\ se\ guarda\ en\ la\ variable\ \$mensajeFallo}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$consultaCompr-\/>rowCount()\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}Ya\ existe\ una\ mesa\ con\ ese\ número,\ por\ favor\ introduce\ otro"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Al\ llegar\ aquí,\ el\ número\ de\ mesa\ no\ existe\ por\ lo\ que\ realiza\ la\ actualización}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}}\ =\ \textcolor{stringliteral}{"{}update\ mesas\ set\ numeroMesa\ =\ :numeroMesa\ where\ idMesa\ =\ :idMesa"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta\ =\ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}-\/>prepare(\mbox{\hyperlink{instalar_8php_a047170d6020a882807665812a27e2525}{\$sql}});}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:numeroMesa"{}},\ \mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numeroMesa}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>bindParam(\textcolor{stringliteral}{"{}:idMesa"{}},\ \mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{\$idMesa}},\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$consulta-\/>execute();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ este\ if\ devuelve\ una\ línea\ significa\ que\ la\ mesa\ se\ modificó,\ por\ lo\ que\ modifico\ las\ variables\ correspondientes\ para\ una\ }}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//correcta\ retroalimentación\ al\ usuario}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$consulta-\/>rowCount()\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeExito\ =\ \textcolor{stringliteral}{"{}Mesa\ modificada\ con\ éxito"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ =\ \textcolor{stringliteral}{"{}No\ se\ ha\ podido\ modificar\ la\ mesa,\ ha\ ocurrido\ un\ error\ inesperado"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00079}00079\ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ =\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00085}00085\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00087}00087\ <?php\ include\ \textcolor{stringliteral}{'../partes/header.php'};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00088}00088\ \textcolor{comment}{//se\ comprueba\ si\ existen\ los\ mensajes\ y\ se\ muestran,\ por\ como\ está\ organizado\ el\ código,\ }}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00089}00089\ \textcolor{comment}{//no\ puede\ haber\ dos\ mensajes\ simultáneos\ }}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00091}00091\ \textcolor{keywordflow}{if}\ (isset(\$mensajeExito))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00092}00092\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<div\ class='container\ p-\/2'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ <div\ class='row'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class='col-\/md-\/12'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class='alert\ alert-\/danger'\ role='alert'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeExito}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00100}00100\ \textcolor{stringliteral}{</div>"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00102}00102\ \textcolor{keywordflow}{if}\ (isset(\$mensajeFallo))\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00103}00103\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<div\ class='container\ p-\/2'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ <div\ class='row'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class='col-\/md-\/12'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <div\ class='alert\ alert-\/danger'\ role='alert'>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$mensajeFallo\ }}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00111}00111\ \textcolor{stringliteral}{</div>"{}};}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00112}00112\ \}?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00114}00114\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00115}00115\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00116}00116\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00117}00117\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container\ p-\/2"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00118}00118\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}alert\ alert-\/danger"{}}\ role=\textcolor{stringliteral}{"{}alert"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?=\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00124}00124\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00125}00125\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00126}00126\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00128}00128\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00131}00131\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00132}00132\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}})\ \{}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00133}00133\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00134}00134\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container\ p-\/2"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00135}00135\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}alert\ alert-\/danger"{}}\ role=\textcolor{stringliteral}{"{}alert"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?=\ \mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}}\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00141}00141\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00142}00142\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00143}00143\ <?php}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00145}00145\ ?>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00147}00147\ <div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00148}00148\ \ \ \ \ <form\ action=\textcolor{stringliteral}{"{}"{}}\ method=\textcolor{stringliteral}{"{}post"{}}>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00149}00149\ \ \ \ \ \ \ \ \ <label>\textcolor{keywordtype}{id}\ mesa:</label>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00150}00150\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}idMesa"{}}\ value=\textcolor{stringliteral}{"{}<?php}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00151}00151\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //Se\ pone\ como\ valor\ el\ id\ de\ la\ mesa\ para\ mantener\ los\ datos\ en\ el\ formulario}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00152}00152\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ codificarHTML(strip\_tags(trim(\$\_GET["{}}idMesa\textcolor{stringliteral}{"{}])));}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>"{}}\ disabled\ />}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00154}00154\ \ \ \ \ \ \ \ \ <label>número\ mesa:</label>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00155}00155\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}text"{}}\ name=\textcolor{stringliteral}{"{}numeroMesa"{}}\ value=\textcolor{stringliteral}{"{}<?php}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00156}00156\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //Se\ comprueba\ el\ método\ del\ servidor\ para\ saber\ de\ donde\ seleccionar\ los\ datos}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00157}00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //que\ irán\ en\ el\ formulario}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00158}00158\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (\$\_SERVER["{}}REQUEST\_METHOD\textcolor{stringliteral}{"{}]\ ==\ "{}}POST\textcolor{stringliteral}{"{})\ \{}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00159}00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ codificarHTML(strip\_tags(trim(\$\_POST["{}}numeroMesa\textcolor{stringliteral}{"{}])));}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00160}\mbox{\hyperlink{editar_mesa_8php_aece20fdbe311cf659d1abaccff7bb37d}{00160}}\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ codificarHTML(strip\_tags(trim(\$\_GET["{}}numeroMesa\textcolor{stringliteral}{"{}])));}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00163}00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?>"{}}\ />}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00164}00164\ \ \ \ \ \ \ \ \ <br\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00166}00166\ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}submit"{}}\ value=\textcolor{stringliteral}{"{}Enviar"{}}\ /><br\ />}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00167}00167\ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00168}00168\ </div>}
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{editar_mesa_8php_source_l00170}00170\ <?php\ include\ \textcolor{stringliteral}{'../partes/footer.php'}\ ?>}
+
+\end{DoxyCode}

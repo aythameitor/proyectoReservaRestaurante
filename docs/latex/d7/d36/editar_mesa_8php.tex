@@ -1,0 +1,110 @@
+\hypertarget{editar_mesa_8php}{}\doxysection{C\+:/\+Users/2daw/\+Desktop/proyecto/mesas/editar\+Mesa.php File Reference}
+\label{editar_mesa_8php}\index{C:/Users/2daw/Desktop/proyecto/mesas/editarMesa.php@{C:/Users/2daw/Desktop/proyecto/mesas/editarMesa.php}}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}{\$error}} = false
+\item 
+\mbox{\hyperlink{editar_mesa_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}} = include \textquotesingle{}../config.\+php\textquotesingle{}
+\item 
+\mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(!isset(\$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]})$\vert$$\vert$!isset(\$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]})$\vert$$\vert$ \$\+\_\+\+SESSION\mbox{[}\char`\"{}id\+Rol\char`\"{}\mbox{]}$<$ 2) \mbox{\hyperlink{editar_mesa_8php_a3310122ffae996872d2ad6da1368df89}{try}}
+\item 
+\mbox{\hyperlink{editar_mesa_8php_aa5af8764920a8a356563dc6b26cbbb76}{if}} (\mbox{\hyperlink{consultas_8php_afdbc1ca6a14872f1364c281075d7f896}{select}}(\char`\"{}id\+Rol\char`\"{}, \$\+\_\+\+SESSION\mbox{[}\char`\"{}email\char`\"{}\mbox{]}, \$\mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}) -\/$>$fetch\+Column()$<$ 2)
+\item 
+\mbox{\hyperlink{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}{\$numero\+Mesa}} = \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificar\+HTML}}(strip\+\_\+tags(trim(\$\+\_\+\+GET\mbox{[}\char`\"{}numero\+Mesa\char`\"{}\mbox{]})))
+\item 
+\mbox{\hyperlink{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}{\$id\+Mesa}} = \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificar\+HTML}}(strip\+\_\+tags(trim(\$\+\_\+\+GET\mbox{[}\char`\"{}id\+Mesa\char`\"{}\mbox{]})))
+\item 
+\mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}}(\$\+\_\+\+SERVER\mbox{[}\char`\"{}REQUEST\+\_\+\+METHOD\char`\"{}\mbox{]}==\char`\"{}POST\char`\"{}) \mbox{\hyperlink{editar_mesa_8php_aece20fdbe311cf659d1abaccff7bb37d}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{editar_mesa_8php_a49c7011be9c979d9174c52a8b83e5d8e}\label{editar_mesa_8php_a49c7011be9c979d9174c52a8b83e5d8e}} 
+\index{editarMesa.php@{editarMesa.php}!\$config@{\$config}}
+\index{\$config@{\$config}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{\$config}{$config}}
+{\footnotesize\ttfamily \$config = include \textquotesingle{}../config.\+php\textquotesingle{}}
+
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00015}{15}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}\label{editar_mesa_8php_aeba2ab722cedda53dbb7ec1a59f45550}} 
+\index{editarMesa.php@{editarMesa.php}!\$error@{\$error}}
+\index{\$error@{\$error}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{\$error}{$error}}
+{\footnotesize\ttfamily \$error = false}
+
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00013}{13}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}\label{editar_mesa_8php_a47fa8d3f7f5ac7512e29271397c36efa}} 
+\index{editarMesa.php@{editarMesa.php}!\$idMesa@{\$idMesa}}
+\index{\$idMesa@{\$idMesa}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{\$idMesa}{$idMesa}}
+{\footnotesize\ttfamily \$id\+Mesa = \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificar\+HTML}}(strip\+\_\+tags(trim(\$\+\_\+\+GET\mbox{[}\char`\"{}id\+Mesa\char`\"{}\mbox{]})))}
+
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00036}{36}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+
+
+Referenced by \mbox{\hyperlink{consultas_8php_source_l00026}{select\+Mesa()}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}\label{editar_mesa_8php_a941ffaa19af69d98dd58c2a6877eac9e}} 
+\index{editarMesa.php@{editarMesa.php}!\$numeroMesa@{\$numeroMesa}}
+\index{\$numeroMesa@{\$numeroMesa}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{\$numeroMesa}{$numeroMesa}}
+{\footnotesize\ttfamily \$numero\+Mesa = \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificar\+HTML}}(strip\+\_\+tags(trim(\$\+\_\+\+GET\mbox{[}\char`\"{}numero\+Mesa\char`\"{}\mbox{]})))}
+
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00035}{35}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_aece20fdbe311cf659d1abaccff7bb37d}\label{editar_mesa_8php_aece20fdbe311cf659d1abaccff7bb37d}} 
+\index{editarMesa.php@{editarMesa.php}!else@{else}}
+\index{else@{else}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \mbox{\hyperlink{login_8php_a59f1364940da3d5a220e0080352ed644}{if}} ( \$\+\_\+\+SERVER\mbox{[}\char`\"{}REQUEST\+\_\+\+METHOD\char`\"{}\mbox{]}==\char`\"{}POST\char`\"{}) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \mbox{\hyperlink{codificar_8php_a317945bcd610ff0d050ad58e756bfe9a}{codificarHTML}}(strip\_tags(trim(\$\_GET[\textcolor{stringliteral}{"{}numeroMesa"{}}])))}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00160}{160}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_aa5af8764920a8a356563dc6b26cbbb76}\label{editar_mesa_8php_aa5af8764920a8a356563dc6b26cbbb76}} 
+\index{editarMesa.php@{editarMesa.php}!if@{if}}
+\index{if@{if}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily if(isset(\$mensaje\+Exito)) if(isset( \$mensaje\+Fallo)) if(\$error) if(\$error) (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00029}{29}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+
+\mbox{\Hypertarget{editar_mesa_8php_a3310122ffae996872d2ad6da1368df89}\label{editar_mesa_8php_a3310122ffae996872d2ad6da1368df89}} 
+\index{editarMesa.php@{editarMesa.php}!try@{try}}
+\index{try@{try}!editarMesa.php@{editarMesa.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \mbox{\hyperlink{crear_reserva_8php_a6ed04dc679a3c83d94f86210c529fb47}{catch}} (PDOException \$error) try (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{instalar_8php_a881924afaecbe8ee5c0d26174a1e8081}{\$conexion}}\ =\ \mbox{\hyperlink{consultas_8php_a33a9c8a31ea29f3f6b484cacb36a6889}{conexion}}()}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{editar_mesa_8php_source_l00025}{25}} of file \mbox{\hyperlink{editar_mesa_8php_source}{editar\+Mesa.\+php}}.
+

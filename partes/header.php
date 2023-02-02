@@ -1,4 +1,9 @@
 <?php
+/**
+ * Es el header de todas las páginas, recibe datos y muestra un menú diferente en base a cada rol
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ */
 if (isset($_POST["salir"])) {
     unset($_SESSION["email"]);
     unset($_SESSION["idRol"]);

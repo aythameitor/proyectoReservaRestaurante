@@ -1,3 +1,11 @@
+<?php
+/**
+ * Es el footer que será añadido al final de las páginas
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ */
+
+?>
 <footer class="footer mt-5">
     <div>
         <p>Aythami miguel cabrera mayor</p>

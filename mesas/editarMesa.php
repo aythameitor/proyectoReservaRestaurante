@@ -1,4 +1,13 @@
 <?php
+/**
+ * Se encarga de la gestión de la página Editar mesa, que toma valores de mostrarMesas.php
+ * y permite editar la mesa correspondiente
+ * @author Aythami Miguel Cabrera Mayor
+ * @category File
+ * @throws PDOException
+ * @uses /funciones/codificar.php
+ * @uses /funciones/consultas.php
+ */
 session_name("reservaRestaurante");
 session_start();
 $error = false;
