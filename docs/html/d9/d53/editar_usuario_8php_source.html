@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Proyecto reserva restaurante: C:/Users/2daw/Desktop/proyecto/usuarios/editarUsuario.php Source File</title>
+<title>Proyecto reserva restaurante: C:/Users/aythami/Desktop/trabajos/dsw/proyecto/código/usuarios/editarUsuario.php Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Proyecto reserva restaurante<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Proyecto encargado de organizar las reservas de un restaurante</div>
+   <div id="projectbrief">Proyecto basado en la reserva de mesa de un restaurante</div>
   </td>
  </tr>
  </tbody>
@@ -47,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d9/d53/editar_usuario_8php_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,19 +89,14 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="../../dir_e914da7c411e9b684f6c8afc5f5b56d1.html">2daw</a></li><li class="navelem"><a class="el" href="../../dir_caf8dff7b2c1a1a7074581a960209215.html">Desktop</a></li><li class="navelem"><a class="el" href="../../dir_5db9ae9ae8a124c3b5382dbf77d1e7ac.html">proyecto</a></li><li class="navelem"><a class="el" href="../../dir_7c7bc92dfe0aafadef50a756b19473fa.html">usuarios</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">editarUsuario.php</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d9/d53/editar_usuario_8php.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>session_name(<span class="stringliteral">&quot;reservaRestaurante&quot;</span>);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>session_start();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">   12</a></span><a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>$error = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>include <span class="stringliteral">&quot;../funciones/consultas.php&quot;</span>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordflow">if</span> (!isset($_SESSION[<span class="stringliteral">&quot;email&quot;</span>]) || !isset($_SESSION[<span class="stringliteral">&quot;idRol&quot;</span>])) {</div>
@@ -88,7 +104,7 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    die();</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d9/d53/editar_usuario_8php.html#a485464b6f3684a0954262edc77f3ff31">   20</a></span><span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (isset($_POST[<span class="stringliteral">&quot;submit&quot;</span>])) {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        $emailPre = strip_tags(trim($_POST[<span class="stringliteral">&quot;emailPre&quot;</span>]));</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        $emailPost = strip_tags(trim($_POST[<span class="stringliteral">&quot;emailPost&quot;</span>]));</div>
@@ -96,26 +112,26 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        $contrasenaPost = password_hash(strip_tags(trim($_POST[<span class="stringliteral">&quot;contrasenaPost&quot;</span>])), PASSWORD_DEFAULT);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">//Inicio conexión</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a> = <a class="code hl_function" href="../../da/df5/consultas_8php.html#a33a9c8a31ea29f3f6b484cacb36a6889">conexion</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        $conexion = conexion();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">//validación del antiguo email y confirmación de que los campos no están vacíos</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">if</span> (filter_var($emailPre, FILTER_VALIDATE_EMAIL) == <span class="keyword">false</span> || $emailPre == <span class="stringliteral">&quot;&quot;</span> || $contrasenaPre == <span class="stringliteral">&quot;&quot;</span> || $contrasenaPost == <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            $mensajeFallo = <span class="stringliteral">&quot;Asegúrate de haber introducido datos válidos en los campos&quot;</span>;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="comment">//Se recoge el id para su posterior uso</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            $consultaSqlId = <a class="code hl_function" href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a>(<span class="stringliteral">&quot;idUsuario&quot;</span>, $emailPre, <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_variable" href="../../d9/dc0/ver_reservas_privadas_8php.html#a5f71f03983e93ac5855a78b355f59291">$idUsuario</a> = $consultaSqlId-&gt;fetchColumn();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            $consultaSqlId = select(<span class="stringliteral">&quot;idUsuario&quot;</span>, $emailPre, $conexion);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            $idUsuario = $consultaSqlId-&gt;fetchColumn();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="comment">//Se recoge la contraseña para su posterior uso</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            $consultaConstrasena = <a class="code hl_function" href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a>(<span class="stringliteral">&quot;contrasena&quot;</span>, $emailPre, <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            $consultaConstrasena = select(<span class="stringliteral">&quot;contrasena&quot;</span>, $emailPre, $conexion);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="comment">//Si $emailPost está vacío, el email se mantiene igual, se realiza comprobación de la contraseña y se le asigna la nueva</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">if</span> ($emailPost == <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keywordflow">if</span> (password_verify($contrasenaPre, $consultaConstrasena-&gt;fetchColumn())) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a> = <span class="stringliteral">&quot;update usuarios set actualizado = null, contrasena = :contrasenaPost where idUsuario = :idUsuario&quot;</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    $consulta = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare(<a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    $sql = <span class="stringliteral">&quot;update usuarios set actualizado = null, contrasena = :contrasenaPost where idUsuario = :idUsuario&quot;</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    $consulta = $conexion-&gt;prepare($sql);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    $consulta-&gt;bindParam(<span class="stringliteral">&quot;:contrasenaPost&quot;</span>, $contrasenaPost);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    $consulta-&gt;bindParam(<span class="stringliteral">&quot;:idUsuario&quot;</span>, <a class="code hl_variable" href="../../d9/dc0/ver_reservas_privadas_8php.html#a5f71f03983e93ac5855a78b355f59291">$idUsuario</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    $consulta-&gt;bindParam(<span class="stringliteral">&quot;:idUsuario&quot;</span>, $idUsuario);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    $consulta-&gt;execute();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    <span class="keywordflow">if</span> ($consulta-&gt;rowCount() == 1) {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        $mensajeExito = <span class="stringliteral">&quot;Usuario modificado con éxito&quot;</span>;</div>
@@ -127,7 +143,7 @@ $(function() {
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                $comprobacion = <span class="stringliteral">&quot;SELECT email FROM usuarios WHERE email = :email&quot;</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                $consultaCompr = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare($comprobacion);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                $consultaCompr = $conexion-&gt;prepare($comprobacion);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                $consultaCompr-&gt;bindParam(<span class="stringliteral">&quot;:email&quot;</span>, $emailPost);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                $consultaCompr-&gt;execute();</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="comment">//validación del nuevo email</span></div>
@@ -138,11 +154,11 @@ $(function() {
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                        $mensajeFallo = <span class="stringliteral">&quot;ese email ya existe, por favor, elige otro&quot;</span>;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                        <span class="keywordflow">if</span> (password_verify($contrasenaPre, $consultaConstrasena-&gt;fetchColumn())) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                            <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a> = <span class="stringliteral">&quot;update usuarios set email = :emailPost, actualizado = null, contrasena = :contrasenaPost where idUsuario = :idUsuario&quot;</span>;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                            $consulta = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare(<a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                            $sql = <span class="stringliteral">&quot;update usuarios set email = :emailPost, actualizado = null, contrasena = :contrasenaPost where idUsuario = :idUsuario&quot;</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                            $consulta = $conexion-&gt;prepare($sql);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                            $consulta-&gt;bindParam(<span class="stringliteral">&quot;:emailPost&quot;</span>, $emailPost);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                            $consulta-&gt;bindParam(<span class="stringliteral">&quot;:contrasenaPost&quot;</span>, $contrasenaPost);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                            $consulta-&gt;bindParam(<span class="stringliteral">&quot;:idUsuario&quot;</span>, <a class="code hl_variable" href="../../d9/dc0/ver_reservas_privadas_8php.html#a5f71f03983e93ac5855a78b355f59291">$idUsuario</a>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                            $consulta-&gt;bindParam(<span class="stringliteral">&quot;:idUsuario&quot;</span>, $idUsuario);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                            $consulta-&gt;execute();</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                            <span class="keywordflow">if</span> ($consulta-&gt;rowCount() == 1) {</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                $_SESSION[<span class="stringliteral">&quot;email&quot;</span>] = $emailPost;</div>
@@ -158,8 +174,8 @@ $(function() {
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            }</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>} <span class="keywordflow">catch</span> (PDOException <a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> = <a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>-&gt;getMessage();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>} <span class="keywordflow">catch</span> (PDOException $error) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    $error = $error-&gt;getMessage();</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>?&gt;</div>
@@ -191,13 +207,13 @@ $(function() {
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}?&gt;</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>&lt;?php</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordflow">if</span> ($error) {</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    ?&gt;</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container p-2&quot;</span>&gt;</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-md-12&quot;</span>&gt;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;alert alert-danger&quot;</span> role=<span class="stringliteral">&quot;alert&quot;</span>&gt;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    &lt;?=<a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>?&gt;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    &lt;?=$error?&gt;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                &lt;/div&gt;</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            &lt;/div&gt;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        &lt;/div&gt;</div>
@@ -208,13 +224,13 @@ $(function() {
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>&lt;?php</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keywordflow">if</span> ($error) {</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>?&gt;</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container p-2&quot;</span>&gt;</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-md-12&quot;</span>&gt;</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;alert alert-danger&quot;</span> role=<span class="stringliteral">&quot;alert&quot;</span>&gt;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                    &lt;?= <a class="code hl_variable" href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> ?&gt;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                    &lt;?= $error ?&gt;</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                &lt;/div&gt;</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            &lt;/div&gt;</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        &lt;/div&gt;</div>
@@ -248,16 +264,14 @@ $(function() {
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>&lt;/div&gt;</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>&lt;?php include <span class="stringliteral">&#39;../partes/footer.php&#39;</span> ?&gt;</div>
-<div class="ttc" id="aconsultas_8php_html_a33a9c8a31ea29f3f6b484cacb36a6889"><div class="ttname"><a href="../../da/df5/consultas_8php.html#a33a9c8a31ea29f3f6b484cacb36a6889">conexion</a></div><div class="ttdeci">conexion()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df5/consultas_8php_source.html#l00038">consultas.php:38</a></div></div>
-<div class="ttc" id="aconsultas_8php_html_afdbc1ca6a14872f1364c281075d7f896"><div class="ttname"><a href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a></div><div class="ttdeci">select($campo, $email, $conexion)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df5/consultas_8php_source.html#l00010">consultas.php:10</a></div></div>
-<div class="ttc" id="aeditar_usuario_8php_html_aeba2ab722cedda53dbb7ec1a59f45550"><div class="ttname"><a href="../../d9/d53/editar_usuario_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a></div><div class="ttdeci">$error</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d53/editar_usuario_8php_source.html#l00012">editarUsuario.php:12</a></div></div>
-<div class="ttc" id="ainstalar_8php_html_a047170d6020a882807665812a27e2525"><div class="ttname"><a href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a></div><div class="ttdeci">$sql</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/instalar_8php_source.html#l00008">instalar.php:8</a></div></div>
-<div class="ttc" id="ainstalar_8php_html_a881924afaecbe8ee5c0d26174a1e8081"><div class="ttname"><a href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a></div><div class="ttdeci">$conexion</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/instalar_8php_source.html#l00011">instalar.php:11</a></div></div>
-<div class="ttc" id="aver_reservas_privadas_8php_html_a5f71f03983e93ac5855a78b355f59291"><div class="ttname"><a href="../../d9/dc0/ver_reservas_privadas_8php.html#a5f71f03983e93ac5855a78b355f59291">$idUsuario</a></div><div class="ttdeci">$idUsuario</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dc0/ver_reservas_privadas_8php_source.html#l00020">verReservasPrivadas.php:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="../../dir_ff66fcd21093d1cedef44aa3248bb34e.html">aythami</a></li><li class="navelem"><a class="el" href="../../dir_ff3c073a6f316b7d7178e8eb38c793d4.html">Desktop</a></li><li class="navelem"><a class="el" href="../../dir_257cb8bb72358d1fff66bde5767998db.html">trabajos</a></li><li class="navelem"><a class="el" href="../../dir_48867f5605453c251e54e90a79f63fd7.html">dsw</a></li><li class="navelem"><a class="el" href="../../dir_6f66791529778894574707bd55784134.html">proyecto</a></li><li class="navelem"><a class="el" href="../../dir_3414ee58b81198bbb1146b9d1869ce25.html">código</a></li><li class="navelem"><a class="el" href="../../dir_95399bf33d60e0c203500bb9d7810300.html">usuarios</a></li><li class="navelem"><b>editarUsuario.php</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
 </body>
 </html>

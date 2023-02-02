@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Proyecto reserva restaurante: C:/Users/2daw/Desktop/proyecto/mesas/mostrarMesas.php Source File</title>
+<title>Proyecto reserva restaurante: C:/Users/aythami/Desktop/trabajos/dsw/proyecto/código/mesas/mostrarMesas.php Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Proyecto reserva restaurante<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Proyecto encargado de organizar las reservas de un restaurante</div>
+   <div id="projectbrief">Proyecto basado en la reserva de mesa de un restaurante</div>
   </td>
  </tr>
  </tbody>
@@ -47,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d8/d8f/mostrar_mesas_8php_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,19 +89,14 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="../../dir_e914da7c411e9b684f6c8afc5f5b56d1.html">2daw</a></li><li class="navelem"><a class="el" href="../../dir_caf8dff7b2c1a1a7074581a960209215.html">Desktop</a></li><li class="navelem"><a class="el" href="../../dir_5db9ae9ae8a124c3b5382dbf77d1e7ac.html">proyecto</a></li><li class="navelem"><a class="el" href="../../dir_1e12c83773fc27b5da01863f12cba608.html">mesas</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">mostrarMesas.php</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d8/d8f/mostrar_mesas_8php.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>session_name(<span class="stringliteral">&quot;reservaRestaurante&quot;</span>);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>session_start();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">   12</a></span><a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>$error = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>include <span class="stringliteral">&quot;../funciones/consultas.php&quot;</span>;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>include <span class="stringliteral">&quot;../funciones/codificar.php&quot;</span>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//Como esta es una página pública, pero requiere registro, se comprueba que la sesión</span></div>
@@ -89,20 +105,20 @@ $(function() {
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    header(<span class="stringliteral">&quot;location:../index.php&quot;</span>);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    die();</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d8/d8f/mostrar_mesas_8php.html#a485464b6f3684a0954262edc77f3ff31">   21</a></span><span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">//Este if comprueba si vienes del método POST, si vienes con el mismo, significa que quieres añadir una mesa nueva</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> ($_SERVER[<span class="stringliteral">&quot;REQUEST_METHOD&quot;</span>] == <span class="stringliteral">&quot;POST&quot;</span>) {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="comment">//Se crea la conexión y se recoge y procesa el número de mesa enviado</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a> = <a class="code hl_function" href="../../da/df5/consultas_8php.html#a33a9c8a31ea29f3f6b484cacb36a6889">conexion</a>();</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_variable" href="../../d7/d36/editar_mesa_8php.html#a941ffaa19af69d98dd58c2a6877eac9e">$numeroMesa</a> = <a class="code hl_function" href="../../db/dc2/codificar_8php.html#a317945bcd610ff0d050ad58e756bfe9a">codificarHTML</a>(strip_tags(trim($_POST[<span class="stringliteral">&quot;numeroMesa&quot;</span>])));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        $conexion = conexion();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        $numeroMesa = codificarHTML(strip_tags(trim($_POST[<span class="stringliteral">&quot;numeroMesa&quot;</span>])));</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">//comprueba que sea un número</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> (filter_var(<a class="code hl_variable" href="../../d7/d36/editar_mesa_8php.html#a941ffaa19af69d98dd58c2a6877eac9e">$numeroMesa</a>, FILTER_VALIDATE_INT) == <span class="keyword">false</span>) {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> (filter_var($numeroMesa, FILTER_VALIDATE_INT) == <span class="keyword">false</span>) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            $mensajeFallo = <span class="stringliteral">&quot;Por favor introduce un número&quot;</span>;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="comment">//Se realiza una consulta a la base de datos con tu email y se comprueba el resultado</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a>(<span class="stringliteral">&quot;idRol&quot;</span>, $_SESSION[<span class="stringliteral">&quot;email&quot;</span>], <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>)-&gt;fetchColumn() &gt;= 2) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">if</span> (select(<span class="stringliteral">&quot;idRol&quot;</span>, $_SESSION[<span class="stringliteral">&quot;email&quot;</span>], $conexion)-&gt;fetchColumn() &gt;= 2) {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                $comprobacion = <span class="stringliteral">&quot;SELECT numeroMesa FROM mesas WHERE numeroMesa = $numeroMesa&quot;</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                $consultaCompr = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare($comprobacion);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                $consultaCompr = $conexion-&gt;prepare($comprobacion);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                $consultaCompr-&gt;execute();</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="comment">//Si la consulta devuelve 1 fila significa que ya existe una mesa con ese número, los cuales son únicos</span></div>
@@ -110,39 +126,39 @@ $(function() {
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    $mensajeFallo = <span class="stringliteral">&quot;Ya existe una mesa con ese número, por favor introduce otro&quot;</span>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    <span class="comment">//y si no, se inserta la nueva mesa</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                    <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a> = <span class="stringliteral">&quot;insert into mesas (numeroMesa) values (:numeroMesa)&quot;</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    $consulta = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare(<a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    $consulta-&gt;bindParam(<span class="stringliteral">&quot;:numeroMesa&quot;</span>, <a class="code hl_variable" href="../../d7/d36/editar_mesa_8php.html#a941ffaa19af69d98dd58c2a6877eac9e">$numeroMesa</a>, PDO::PARAM_STR);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                    $sql = <span class="stringliteral">&quot;insert into mesas (numeroMesa) values (:numeroMesa)&quot;</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    $consulta = $conexion-&gt;prepare($sql);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    $consulta-&gt;bindParam(<span class="stringliteral">&quot;:numeroMesa&quot;</span>, $numeroMesa, PDO::PARAM_STR);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    $consulta-&gt;execute();</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    $mensajeExito = <span class="stringliteral">&quot;Mesa añadida con éxito&quot;</span>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <span class="keywordflow">catch</span> (PDOException <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> = <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>-&gt;getMessage();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <span class="keywordflow">catch</span> (PDOException $error) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    $error = $error-&gt;getMessage();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a> = <a class="code hl_function" href="../../da/df5/consultas_8php.html#a33a9c8a31ea29f3f6b484cacb36a6889">conexion</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    $conexion = conexion();</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//Selecciona el id del rol en base</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a>(<span class="stringliteral">&quot;idRol&quot;</span>, $_SESSION[<span class="stringliteral">&quot;email&quot;</span>], <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>)-&gt;fetchColumn() &gt;= 2) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (select(<span class="stringliteral">&quot;idRol&quot;</span>, $_SESSION[<span class="stringliteral">&quot;email&quot;</span>], $conexion)-&gt;fetchColumn() &gt;= 2) {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">//Comprueba si existe el id de la mesa a eliminar</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> (isset($_GET[<span class="stringliteral">&quot;eliminar&quot;</span>])) {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            $id = strip_tags(trim($_GET[<span class="stringliteral">&quot;eliminar&quot;</span>]));</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            $eliminar = <span class="stringliteral">&quot;DELETE FROM mesas WHERE idMesa=:idMesa&quot;</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            $borrar = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare($eliminar);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            $borrar = $conexion-&gt;prepare($eliminar);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            $borrar-&gt;bindParam(<span class="stringliteral">&quot;:idMesa&quot;</span>, $id, PDO::PARAM_INT);</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            $borrar-&gt;execute();</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    };</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">//Muestra las mesas ordenandolas por el número de mesa</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ad191177aa9e448f93c1c53a18909f65f">$consultaSQL</a> = <span class="stringliteral">&#39;select * from mesas order by numeroMesa asc&#39;</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ac17e34e2481aba4d112054122cb09b8d">$sentencia</a> = <a class="code hl_variable" href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a>-&gt;prepare(<a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ad191177aa9e448f93c1c53a18909f65f">$consultaSQL</a>);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ac17e34e2481aba4d112054122cb09b8d">$sentencia</a>-&gt;execute();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    $mesas = <a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ac17e34e2481aba4d112054122cb09b8d">$sentencia</a>-&gt;fetchAll();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <span class="keywordflow">catch</span> (PDOException <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> = <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>-&gt;getMessage();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    $consultaSQL = <span class="stringliteral">&#39;select * from mesas order by numeroMesa asc&#39;</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    $sentencia = $conexion-&gt;prepare($consultaSQL);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    $sentencia-&gt;execute();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    $mesas = $sentencia-&gt;fetchAll();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <span class="keywordflow">catch</span> (PDOException $error) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    $error = $error-&gt;getMessage();</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
@@ -175,13 +191,13 @@ $(function() {
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}?&gt;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>&lt;?php</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordflow">if</span> ($error) {</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    ?&gt;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container p-2&quot;</span>&gt;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-md-12&quot;</span>&gt;</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;alert alert-danger&quot;</span> role=<span class="stringliteral">&quot;alert&quot;</span>&gt;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                    &lt;?=<a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>?&gt;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                    &lt;?=$error?&gt;</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                &lt;/div&gt;</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            &lt;/div&gt;</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        &lt;/div&gt;</div>
@@ -191,13 +207,13 @@ $(function() {
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>?&gt;</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>&lt;?php</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a>) {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordflow">if</span> ($error) {</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>?&gt;</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;container p-2&quot;</span>&gt;</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;row&quot;</span>&gt;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;col-md-12&quot;</span>&gt;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;alert alert-danger&quot;</span> role=<span class="stringliteral">&quot;alert&quot;</span>&gt;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    &lt;?= <a class="code hl_variable" href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a> ?&gt;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    &lt;?= $error ?&gt;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                &lt;/div&gt;</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            &lt;/div&gt;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        &lt;/div&gt;</div>
@@ -247,7 +263,7 @@ $(function() {
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                &lt;/thead&gt;</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                &lt;tbody&gt;</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                    &lt;?php</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                    <span class="keywordflow">if</span> ($mesas &amp;&amp; <a class="code hl_variable" href="../../d4/d52/ver_reservas_mesas_8php.html#ac17e34e2481aba4d112054122cb09b8d">$sentencia</a>-&gt;rowCount() &gt; 0) {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                    <span class="keywordflow">if</span> ($mesas &amp;&amp; $sentencia-&gt;rowCount() &gt; 0) {</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                        <span class="keywordflow">foreach</span> ($mesas as $fila) {</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                    ?&gt;</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                            &lt;tr&gt;</div>
@@ -279,19 +295,14 @@ $(function() {
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    &lt;/div&gt;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>&lt;/div&gt;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>&lt;?php include <span class="stringliteral">&#39;../partes/footer.php&#39;</span> ?&gt;</div>
-<div class="ttc" id="acodificar_8php_html_a317945bcd610ff0d050ad58e756bfe9a"><div class="ttname"><a href="../../db/dc2/codificar_8php.html#a317945bcd610ff0d050ad58e756bfe9a">codificarHTML</a></div><div class="ttdeci">codificarHTML($html)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc2/codificar_8php_source.html#l00007">codificar.php:7</a></div></div>
-<div class="ttc" id="aconsultas_8php_html_a33a9c8a31ea29f3f6b484cacb36a6889"><div class="ttname"><a href="../../da/df5/consultas_8php.html#a33a9c8a31ea29f3f6b484cacb36a6889">conexion</a></div><div class="ttdeci">conexion()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df5/consultas_8php_source.html#l00038">consultas.php:38</a></div></div>
-<div class="ttc" id="aconsultas_8php_html_afdbc1ca6a14872f1364c281075d7f896"><div class="ttname"><a href="../../da/df5/consultas_8php.html#afdbc1ca6a14872f1364c281075d7f896">select</a></div><div class="ttdeci">select($campo, $email, $conexion)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df5/consultas_8php_source.html#l00010">consultas.php:10</a></div></div>
-<div class="ttc" id="aeditar_mesa_8php_html_a941ffaa19af69d98dd58c2a6877eac9e"><div class="ttname"><a href="../../d7/d36/editar_mesa_8php.html#a941ffaa19af69d98dd58c2a6877eac9e">$numeroMesa</a></div><div class="ttdeci">$numeroMesa</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d36/editar_mesa_8php_source.html#l00035">editarMesa.php:35</a></div></div>
-<div class="ttc" id="ainstalar_8php_html_a047170d6020a882807665812a27e2525"><div class="ttname"><a href="../../d7/d5e/instalar_8php.html#a047170d6020a882807665812a27e2525">$sql</a></div><div class="ttdeci">$sql</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/instalar_8php_source.html#l00008">instalar.php:8</a></div></div>
-<div class="ttc" id="ainstalar_8php_html_a881924afaecbe8ee5c0d26174a1e8081"><div class="ttname"><a href="../../d7/d5e/instalar_8php.html#a881924afaecbe8ee5c0d26174a1e8081">$conexion</a></div><div class="ttdeci">$conexion</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/instalar_8php_source.html#l00011">instalar.php:11</a></div></div>
-<div class="ttc" id="amostrar_mesas_8php_html_aeba2ab722cedda53dbb7ec1a59f45550"><div class="ttname"><a href="../../d8/d8f/mostrar_mesas_8php.html#aeba2ab722cedda53dbb7ec1a59f45550">$error</a></div><div class="ttdeci">$error</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d8f/mostrar_mesas_8php_source.html#l00012">mostrarMesas.php:12</a></div></div>
-<div class="ttc" id="aver_reservas_mesas_8php_html_ac17e34e2481aba4d112054122cb09b8d"><div class="ttname"><a href="../../d4/d52/ver_reservas_mesas_8php.html#ac17e34e2481aba4d112054122cb09b8d">$sentencia</a></div><div class="ttdeci">$sentencia</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d52/ver_reservas_mesas_8php_source.html#l00032">verReservasMesas.php:32</a></div></div>
-<div class="ttc" id="aver_reservas_mesas_8php_html_ad191177aa9e448f93c1c53a18909f65f"><div class="ttname"><a href="../../d4/d52/ver_reservas_mesas_8php.html#ad191177aa9e448f93c1c53a18909f65f">$consultaSQL</a></div><div class="ttdeci">if(select(&quot;idRol&quot;, $_SESSION[&quot;email&quot;], $conexion) -&gt;fetchColumn()&lt; 2) if(isset($_GET[&quot;reserva&quot;]) &amp;&amp; $_SESSION[&quot;idRol&quot;] &gt;=2) $consultaSQL</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d52/ver_reservas_mesas_8php_source.html#l00031">verReservasMesas.php:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="../../dir_ff66fcd21093d1cedef44aa3248bb34e.html">aythami</a></li><li class="navelem"><a class="el" href="../../dir_ff3c073a6f316b7d7178e8eb38c793d4.html">Desktop</a></li><li class="navelem"><a class="el" href="../../dir_257cb8bb72358d1fff66bde5767998db.html">trabajos</a></li><li class="navelem"><a class="el" href="../../dir_48867f5605453c251e54e90a79f63fd7.html">dsw</a></li><li class="navelem"><a class="el" href="../../dir_6f66791529778894574707bd55784134.html">proyecto</a></li><li class="navelem"><a class="el" href="../../dir_3414ee58b81198bbb1146b9d1869ce25.html">código</a></li><li class="navelem"><a class="el" href="../../dir_76733b9599d6be7336f00610139e0a1f.html">mesas</a></li><li class="navelem"><b>mostrarMesas.php</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
 </body>
 </html>

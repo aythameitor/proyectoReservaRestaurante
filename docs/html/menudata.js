@@ -26,19 +26,4 @@ var menudata={children:[
 {text:"Main Page",url:"index.html"},
 {text:"Related Pages",url:"pages.html"},
 {text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"Globals",url:"globals.html",children:[
-{text:"All",url:"globals.html",children:[
-{text:"$",url:"globals.html#index__24"},
-{text:"c",url:"globals.html#index_c"},
-{text:"e",url:"globals.html#index_e"},
-{text:"i",url:"globals.html#index_i"},
-{text:"s",url:"globals.html#index_s"},
-{text:"t",url:"globals.html#index_t"}]},
-{text:"Functions",url:"globals_func.html"},
-{text:"Variables",url:"globals_vars.html",children:[
-{text:"$",url:"globals_vars.html#index__24"},
-{text:"c",url:"globals_vars.html#index_c"},
-{text:"e",url:"globals_vars.html#index_e"},
-{text:"i",url:"globals_vars.html#index_i"},
-{text:"t",url:"globals_vars.html#index_t"}]}]}]}]}
+{text:"File List",url:"files.html"}]}]}
