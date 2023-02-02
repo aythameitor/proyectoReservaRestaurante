@@ -37,7 +37,7 @@ function selectMesa($campo, $idMesa, $conexion)
  */
 function conexion(){
     $config = include $_SERVER['DOCUMENT_ROOT'].'/config.php';
-    $dsn = $config['db']['host'].';dbname=' . $config['db']['name'];
+    $dsn = "mysql:host=" . $config['db']['host'].';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     return $conexion;
 }
