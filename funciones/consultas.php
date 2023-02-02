@@ -4,7 +4,7 @@
  * Selecciona un campo único de la tabla usuarios para realizar comprobaciones usando como condición el email
  * @param String $campo
  * @param String $email
- * @param String $conexion
+ * @param $conexion
  * @return PDOObject $consulta
  */
 function select($campo, $email, $conexion)
@@ -20,7 +20,7 @@ function select($campo, $email, $conexion)
  * Selecciona un campo único de la tabla mesas para realizar comprobaciones usando como condición el id de la mesa
  * @param String $campo
  * @param String $email
- * @param String $conexion
+ * @param $conexion
  * @return PDOObject $consulta
  */
 function selectMesa($campo, $idMesa, $conexion)
@@ -33,7 +33,7 @@ function selectMesa($campo, $idMesa, $conexion)
 }
 /**
  * Inicializa la conexión
- * @return PDOObject $conexion
+ * @return $conexion
  */
 function conexion(){
     $config = include $_SERVER['DOCUMENT_ROOT'].'/config.php';
